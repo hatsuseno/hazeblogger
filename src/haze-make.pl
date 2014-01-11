@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
 
-# blaze-make - generates a blog from the BlazeBlogger repository
+# haze-make - generates a blog from the hazeblogger repository
 # Copyright (C) 2009-2011 Jaromir Hradilek
 
 # This program is  free software:  you can redistribute it and/or modify it
@@ -84,7 +84,7 @@ sub display_help {
 Usage: $NAME [-cpqrIFPTV] [-b DIRECTORY] [-d DIRECTORY]
        $NAME -h|-v
 
-  -b, --blogdir DIRECTORY     specify a directory in which the BlazeBlogger
+  -b, --blogdir DIRECTORY     specify a directory in which the hazeblogger
                               repository is placed
   -d, --destdir DIRECTORY     specify a directory in which the generated
                               blog is to be placed
@@ -222,7 +222,7 @@ sub read_ini {
 # Read the content of the configuration file:
 sub read_conf {
   # Prepare the file name:
-  my $file = catfile($blogdir, '.blaze', 'config');
+  my $file = catfile($blogdir, '.haze', 'config');
 
   # Parse the file:
   if (my $conf = read_ini($file)) {
@@ -243,7 +243,7 @@ sub read_lang {
   my $name = shift || 'en_US';
 
   # Prepare the file name:
-  my $file = catfile($blogdir, '.blaze', 'lang', $name);
+  my $file = catfile($blogdir, '.haze', 'lang', $name);
 
   # Parse the file:
   if (my $lang = read_ini($file)) {
@@ -409,7 +409,7 @@ sub collect_headers {
   my @records = ();
 
   # Prepare the file name:
-  my $head    = catdir($blogdir, '.blaze', "${type}s", 'head');
+  my $head    = catdir($blogdir, '.haze', "${type}s", 'head');
 
   # Open the directory:
   opendir(HEAD, $head) or return @records;
@@ -667,7 +667,7 @@ sub read_entry {
   my $excerpt = shift || 0;
 
   # Prepare the file name:
-  my $file    = catfile($blogdir, '.blaze', "${type}s", 'body', $id);
+  my $file    = catfile($blogdir, '.haze', "${type}s", 'body', $id);
 
   # Initialize required variables:
   my $result  = '';
@@ -885,7 +885,7 @@ sub format_template {
   # Prepare the META tags:
   my $meta_content_type = '<meta http-equiv="Content-Type" content="' .
                           'txt/html; charset=' . $conf_encoding . '">';
-  my $meta_generator    = '<meta name="Generator" content="BlazeBlogger ' .
+  my $meta_generator    = '<meta name="Generator" content="hazeblogger ' .
                           VERSION . '">';
   my $meta_copyright    = '<meta name="Copyright" content="&copy; ' .
                           $current_year . ' ' . $conf_name . '">';
@@ -930,7 +930,7 @@ sub format_template {
   }
 
   # Open the theme file for reading:
-  open(THEME, catfile($blogdir, '.blaze', 'theme', $theme_file))
+  open(THEME, catfile($blogdir, '.haze', 'theme', $theme_file))
     or return 0;
 
   # Read the theme file:
@@ -1077,7 +1077,7 @@ sub write_page {
 sub copy_stylesheet {
   # Prepare file names:
   my $style = $conf->{blog}->{style} || 'default.css';
-  my $from  = catfile($blogdir, '.blaze', 'style', $style);
+  my $from  = catfile($blogdir, '.haze', 'style', $style);
   my $to    = ($destdir eq '.') ? $style : catfile($destdir, $style);
 
   # Check whether the existing style sheet differs:
@@ -1164,7 +1164,7 @@ sub generate_rss {
             "  <title>$blog_title</title>\n" .
             "  <link>$feed_baseurl/</link>\n" .
             "  <description>$blog_subtitle</description>\n" .
-            "  <generator>BlazeBlogger " . VERSION . "</generator>\n";
+            "  <generator>hazeblogger " . VERSION . "</generator>\n";
 
   # Process the requested number of posts:
   foreach my $record (@{$data->{headers}->{posts}}) {
@@ -1671,8 +1671,8 @@ exit_with_error("Invalid option `$ARGV[0]'.", 22) if (scalar(@ARGV) != 0);
 
 # Check whether the repository is present, no matter how naive this method
 # actually is:
-exit_with_error("Not a BlazeBlogger repository! Try `blaze-init' first.",1)
-  unless (-d catdir($blogdir, '.blaze'));
+exit_with_error("Not a hazeblogger repository! Try `haze-init' first.",1)
+  unless (-d catdir($blogdir, '.haze'));
 
 # Make sure there is something to do at all:
 unless ($with_posts || $with_pages) {
@@ -1739,17 +1739,17 @@ __END__
 
 =head1 NAME
 
-blaze-make - generates a blog from the BlazeBlogger repository
+haze-make - generates a blog from the hazeblogger repository
 
 =head1 SYNOPSIS
 
-B<blaze-make> [B<-cpqrIFPTV>] [B<-b> I<directory>] [B<-d> I<directory>]
+B<haze-make> [B<-cpqrIFPTV>] [B<-b> I<directory>] [B<-d> I<directory>]
 
-B<blaze-make> B<-h>|B<-v>
+B<haze-make> B<-h>|B<-v>
 
 =head1 DESCRIPTION
 
-B<blaze-make> reads the BlazeBlogger repository, and generates a complete
+B<haze-make> reads the hazeblogger repository, and generates a complete
 directory tree of static pages, including blog posts, single pages, monthly
 and yearly archives, tags, and even an RSS feed.
 
@@ -1759,7 +1759,7 @@ and yearly archives, tags, and even an RSS feed.
 
 =item B<-b> I<directory>, B<--blogdir> I<directory>
 
-Allows you to specify a I<directory> in which the BlazeBlogger repository
+Allows you to specify a I<directory> in which the hazeblogger repository
 is placed. The default option is a current working directory.
 
 =item B<-d> I<directory>, B<--destdir> I<directory>
@@ -1817,15 +1817,15 @@ Displays version information and exits.
 
 =over
 
-=item I<.blaze/theme/>
+=item I<.haze/theme/>
 
 A directory containing blog themes.
 
-=item I<.blaze/style/>
+=item I<.haze/style/>
 
 A directory containing style sheets.
 
-=item B<.blaze/lang/>
+=item B<.haze/lang/>
 
 A directory containing language files.
 
@@ -1835,28 +1835,28 @@ A directory containing language files.
 
 Generate a blog in a current working directory:
 
-  ~]$ blaze-make
+  ~]$ haze-make
   Done.
 
 Generate a blog in the C<~/public_html/> directory:
 
-  ~]$ blaze-make -d ~/public_html
+  ~]$ haze-make -d ~/public_html
   Done.
 
 Generate a blog with full paths enabled:
 
-  ~]$ blaze-make -F
+  ~]$ haze-make -F
   Done.
 
 =head1 SEE ALSO
 
-B<blaze-init>(1), B<blaze-config>(1), B<blaze-add>(1)
+B<haze-init>(1), B<haze-config>(1), B<haze-add>(1)
 
 =head1 BUGS
 
 To report a bug or to send a patch, please, add a new issue to the bug
-tracker at <http://code.google.com/p/blazeblogger/issues/>, or visit the
-discussion group at <http://groups.google.com/group/blazeblogger/>.
+tracker at <http://code.google.com/p/hazeblogger/issues/>, or visit the
+discussion group at <http://groups.google.com/group/hazeblogger/>.
 
 =head1 COPYRIGHT
 

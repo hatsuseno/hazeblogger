@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
 
-# blaze-list - lists blog posts or pages in the BlazeBlogger repository
+# haze-list - lists blog posts or pages in the hazeblogger repository
 # Copyright (C) 2009-2011 Jaromir Hradilek
 
 # This program is  free software:  you can redistribute it and/or modify it
@@ -87,7 +87,7 @@ Usage: $NAME [-cpqrsCPSV] [-b DIRECTORY] [-I ID] [-a AUTHOR]
                   [-n NUMBER]
        $NAME -h|-v
 
-  -b, --blogdir DIRECTORY     specify a directory in which the BlazeBlogger
+  -b, --blogdir DIRECTORY     specify a directory in which the hazeblogger
                               repository is placed
   -I, --id ID                 display a single blog post or a page
   -a, --author AUTHOR         list blog posts or pages by selected author
@@ -174,7 +174,7 @@ sub read_ini {
 # Read the content of the configuration file:
 sub read_conf {
   # Prepare the file name:
-  my $file = catfile($blogdir, '.blaze', 'config');
+  my $file = catfile($blogdir, '.haze', 'config');
 
   # Parse the file:
   if (my $conf = read_ini($file)) {
@@ -294,7 +294,7 @@ sub collect_headers {
   my @records = ();
 
   # Prepare the file name:
-  my $head    = catdir($blogdir, '.blaze', "${type}s", 'head');
+  my $head    = catdir($blogdir, '.haze', "${type}s", 'head');
 
   # Open the headers directory:
   opendir(HEAD, $head) or return @records;
@@ -472,8 +472,8 @@ exit_with_error("Invalid option `$ARGV[0]'.", 22) if (scalar(@ARGV) != 0);
 
 # Check whether the repository is present, no matter how naive this method
 # actually is:
-exit_with_error("Not a BlazeBlogger repository! Try `blaze-init' first.",1)
-  unless (-d catdir($blogdir, '.blaze'));
+exit_with_error("Not a hazeblogger repository! Try `haze-init' first.",1)
+  unless (-d catdir($blogdir, '.haze'));
 
 # Read the configuration file:
 $conf = read_conf();
@@ -520,19 +520,19 @@ __END__
 
 =head1 NAME
 
-blaze-list - lists blog posts or pages in the BlazeBlogger repository
+haze-list - lists blog posts or pages in the hazeblogger repository
 
 =head1 SYNOPSIS
 
-B<blaze-list> [B<-cpqrsCPSV>] [B<-b> I<directory>] [B<-I> I<id>]
+B<haze-list> [B<-cpqrsCPSV>] [B<-b> I<directory>] [B<-I> I<id>]
 [B<-a> I<author>] [B<-t> I<title>] [B<-T> I<tag>] [B<-d> I<day>]
 [B<-m> I<month>] [B<-y> I<year>] [B<-n> I<number>]
 
-B<blaze-list> B<-h>|B<-v>
+B<haze-list> B<-h>|B<-v>
 
 =head1 DESCRIPTION
 
-B<blaze-list> lists existing blog posts or pages in the BlazeBlogger
+B<haze-list> lists existing blog posts or pages in the hazeblogger
 repository. Additionally, it can also display basic repository statistics.
 
 =head1 OPTIONS
@@ -541,7 +541,7 @@ repository. Additionally, it can also display basic repository statistics.
 
 =item B<-b> I<directory>, B<--blogdir> I<directory>
 
-Allows you to specify a I<directory> in which the BlazeBlogger repository
+Allows you to specify a I<directory> in which the hazeblogger repository
 is placed. The default option is a current working directory.
 
 =item B<-I> I<id>, B<--id> I<id>
@@ -582,24 +582,24 @@ Allows you to specify a I<number> of blog posts or pages to be listed.
 
 =item B<-p>, B<--page>
 
-Tells B<blaze-list> to list pages.
+Tells B<haze-list> to list pages.
 
 =item B<-P>, B<--post>
 
-Tells B<blaze-list> to list blog posts. This is the default option.
+Tells B<haze-list> to list blog posts. This is the default option.
 
 =item B<-S>, B<--stats>
 
-Tells B<blaze-list> to display statistics.
+Tells B<haze-list> to display statistics.
 
 =item B<-s>, B<--short>
 
-Tells B<blaze-list> to display each blog post or page information on a
+Tells B<haze-list> to display each blog post or page information on a
 single line.
 
 =item B<-r>, B<--reverse>
 
-Tells B<blaze-list> to display blog posts or pages in reverse order.
+Tells B<haze-list> to display blog posts or pages in reverse order.
 
 =item B<-c>, B<--color>
 
@@ -633,10 +633,10 @@ Displays version information and exits.
 
 List all blog post:
 
-  ~]$ blaze-list
+  ~]$ haze-list
   ID: 11 | 2010-07-05 | Jaromir Hradilek
 
-      Title: Join #blazeblogger on IRC
+      Title: Join #hazeblogger on IRC
       Tags:  announcement
 
   ID: 10 | 2009-12-16 | Jaromir Hradilek
@@ -648,22 +648,22 @@ List all blog post:
 
 List all blog post in reverse order:
 
-  ~]$ blaze-list -r
+  ~]$ haze-list -r
   ID: 1 | 2009-02-10 | Jaromir Hradilek
 
-      Title: BlazeBlogger 0.7.0
+      Title: hazeblogger 0.7.0
       Tags:  release
 
   ID: 2 | 2009-02-11 | Jaromir Hradilek
 
-      Title: BlazeBlogger 0.7.1
+      Title: hazeblogger 0.7.1
       Tags:  release
 
   etc.
 
 List all pages:
 
-  ~]$ blaze-list -p
+  ~]$ haze-list -p
   ID: 5 | 2009-02-10 | Jaromir Hradilek
 
       Title: Downloads
@@ -676,25 +676,25 @@ List all pages:
 
 List each blog post on a single line:
 
-  ~]$ blaze-list -s
-  ID: 11 | 2010-07-05 | Join #blazeblogger on IRC
+  ~]$ haze-list -s
+  ID: 11 | 2010-07-05 | Join #hazeblogger on IRC
   ID: 10 | 2009-12-16 | Debian and Fedora Packages
   etc.
 
 Display a short version of blog statistics:
 
-  ~]$ blaze-list -Ss
+  ~]$ haze-list -Ss
   There is a total number of 11 blog posts and 5 pages in the repository.
 
 =head1 SEE ALSO
 
-B<blaze-config>(1), B<blaze-add>(1)
+B<haze-config>(1), B<haze-add>(1)
 
 =head1 BUGS
 
 To report a bug or to send a patch, please, add a new issue to the bug
-tracker at <http://code.google.com/p/blazeblogger/issues/>, or visit the
-discussion group at <http://groups.google.com/group/blazeblogger/>.
+tracker at <http://code.google.com/p/hazeblogger/issues/>, or visit the
+discussion group at <http://groups.google.com/group/hazeblogger/>.
 
 =head1 COPYRIGHT
 

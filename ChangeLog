@@ -1,3 +1,9 @@
+2014-01-11  Rudolf Leermakers <rudolf@hatsuseno.org>
+
+  * All files: Rebranded BlazeBlogger to hazeblogger.
+
+  * windows/*: Removed all Windows batch files.
+
 2011-02-18  Jaromir Hradilek <jhradilek@gmail.com>
 
   * INSTALL, Makefile, README, src/blaze-add.pl, src/blaze-config.pl,

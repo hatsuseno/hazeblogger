@@ -1,4 +1,4 @@
-                  BlazeBlogger - a CMS without boundaries
+                  hazeblogger - a CMS without boundaries
 
                          installation instructions
 
@@ -11,12 +11,12 @@
    Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
 
    A copy  of the license is included  as a file called FDL  in the main
-   directory of the BlazeBlogger source package.
+   directory of the hazeblogger source package.
 
 
 ABSTRACT
 
-This document covers  the installation of BlazeBlogger on various operating
+This document covers  the installation of hazeblogger on various operating
 systems, including GNU/Linux, and Microsoft Windows.
 
 
@@ -47,70 +47,70 @@ following at a shell prompt:
 
 2.1. Installing on Debian
 
-BlazeBlogger is currently available in  both testing (Squeeze) and unstable
+hazeblogger is currently available in  both testing (Squeeze) and unstable
 (Sid) version of Debian. To install it, open a terminal, and run the follo-
 wing command:
 
-  ~]# apt-get install blazeblogger
+  ~]# apt-get install hazeblogger
 
 2.2. Installing on Fedora
 
-BlazeBlogger is currently available in both Fedora 12 (Constantine)  and 13
+hazeblogger is currently available in both Fedora 12 (Constantine)  and 13
 (Goddard).  To install it,  open a terminal, and run the following command:
 
-  ~]# yum install blazeblogger
+  ~]# yum install hazeblogger
 
 2.3. Installing on Ubuntu
 
-BlazeBlogger  is currently available in  Ubuntu 10.04 LTS  (Lucid Lynx). To
+hazeblogger  is currently available in  Ubuntu 10.04 LTS  (Lucid Lynx). To
 install it, open a terminal, and run the following command:
 
-  ~]# sudo apt-get install blazeblogger
+  ~]# sudo apt-get install hazeblogger
 
 
 3. INSTALLING ON WINDOWS
 
-Currently, there is no installer for Microsoft Windows. To use BlazeBlogger
+Currently, there is no installer for Microsoft Windows. To use hazeblogger
 there,  download the latest version from the official homepage,  unpack it,
-and use the batch  files that are  located in  blazeblogger-1.2.0/windows/.
+and use the batch  files that are  located in  hazeblogger-1.2.0/windows/.
 For example:
 
-  C:\blazeblogger-1.2.0\windows> blaze init
+  C:\hazeblogger-1.2.0\windows> haze init
 
-Alternatively, you can use BlazeBlogger with Cygwin. In that case, see Sec-
+Alternatively, you can use hazeblogger with Cygwin. In that case, see Sec-
 tion 4, "Installing from the Source Code" for detailed installation instru-
 ctions.
 
 
 4. INSTALLING FROM THE SOURCE CODE
 
-To install  BlazeBlogger  from the source code,  download the latest source
+To install  hazeblogger  from the source code,  download the latest source
 package from the official homepage, and unpack it:
 
-  ~]$ tar xfz blazeblogger-1.2.0.tar.gz
+  ~]$ tar xfz hazeblogger-1.2.0.tar.gz
 
-A directory called  blazeblogger-1.2.0 will  appear  in the current working
+A directory called  hazeblogger-1.2.0 will  appear  in the current working
 directory.  Switch to superuser, get into the newly created directory,  and
 type "make install" at a shell prompt:
 
-  blazeblogger-1.2.0]# make install
+  hazeblogger-1.2.0]# make install
 
 This will install executables, manual pages, documentation, and application
 data to the /usr/local/ directory,  and place  the Bash completion  file to
 /etc/bash_completion.d/. To use a different installation directory,  change
 the value of "prefix" on the command line. For example, if you want to ins-
-tall BlazeBlogger to /usr/,  type the following command:
+tall hazeblogger to /usr/,  type the following command:
 
-  blazeblogger-1.2.0]# make prefix=/usr install
+  hazeblogger-1.2.0]# make prefix=/usr install
 
 Alternatively, you can choose to install executables only. For instance, to
-install BlazeBlogger into your home directory, type:
+install hazeblogger into your home directory, type:
 
-  blazeblogger-1.2.0]$ make prefix=$HOME install_bin
+  hazeblogger-1.2.0]$ make prefix=$HOME install_bin
 
 Finally,  if you prefer to install all available files, but you do not have
 superuser privileges, change the value of "compdir" to a directory you have
 access to. For example:
 
-  blazeblogger-1.2.0]$ make prefix=$HOME compdir='$(prefix)/etc' install
+  hazeblogger-1.2.0]$ make prefix=$HOME compdir='$(prefix)/etc' install
 
