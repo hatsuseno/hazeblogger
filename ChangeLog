@@ -1,0 +1,1459 @@
+2011-02-18  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * INSTALL, Makefile, README, src/blaze-add.pl, src/blaze-config.pl,
+  src/blaze-edit.pl, src/blaze-init.pl, src/blaze-list.pl, src/blaze-log.pl,
+  src/blaze-make.pl, src/blaze-remove.pl, unix/blaze.sh, unix/man/man1/blaze.1,
+  windows/blaze.bat: Increased the version number.
+
+  * unix/man/man1/blaze.1: Updated the manual page for the command wrapper.
+
+2011-02-16  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-add.pl, src/blaze-edit.pl: Simplified the header for pages.
+
+2011-02-13  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * unix/blaze.sh: Fixed the "cfg" alias.
+
+  * unix/blaze.sh: Implemented command aliases.
+
+  * unix/blaze.sh, windows/blaze.bat: Minor revision of command wrappers.
+
+2011-01-23  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-make.pl: Corrected a document header creation.
+
+2011-01-22  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * unix/bash_completion: Updated the Bash completion.
+
+  * src/blaze-init.pl, src/blaze-make.pl: Added the "rel" attribute to links.
+  (Issue 20)
+
+  * src/blaze-add.pl, src/blaze-edit.pl: Simplified checking of invalid input.
+
+  * src/blaze-make.pl: Updated the support for keywords.
+
+  * src/blaze-edit.pl: Implemented the ability to handle keywords.
+
+  * src/blaze-add.pl: Documented the newly added "--keywords" option.
+
+  * src/blaze-add.pl: Added the support for keywords.
+
+2011-01-18  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-config.pl: Updated the documentation.
+
+  * src/blaze-config.pl, src/blaze-init.pl, src/blaze-make.pl: Improved SEO.
+  (Issue 25)
+
+  * src/blaze-init.pl: Updated the default theme.
+
+  * src/blaze-make.pl: Fixed the document type handling. (Issue 28)
+
+2010-11-23  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-make.pl: Simplified the "format_*()" functions.
+
+  * src/blaze-make.pl: Simplified the "list_of_*()" functions.
+
+2010-11-21  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * INSTALL: Updated the installation instructions.
+
+2010-11-12  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * unix/blaze.sh: Fixed the "blaze man" command. (Issue 33)  Many thanks to
+  "slakmagik" for sending the patch!
+
+  * INSTALL: Covered the installation without superuser privileges. (Issue 32) 
+  Many thanks to "slakmagik" for sending the patch!
+
+2010-11-08  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * INSTALL, Makefile, README, src/blaze-add.pl, src/blaze-config.pl,
+  src/blaze-edit.pl, src/blaze-init.pl, src/blaze-list.pl, src/blaze-log.pl,
+  src/blaze-make.pl, src/blaze-remove.pl, unix/blaze.sh, unix/man/man1/blaze.1,
+  windows/blaze.bat: Increased the version for the upcoming release.
+
+2010-11-05  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-make.pl: Corrected the fix_link() subroutine. (Issue 31)
+
+2010-10-29  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * INSTALL, Makefile, README, src/blaze-add.pl, src/blaze-config.pl,
+  src/blaze-edit.pl, src/blaze-init.pl, src/blaze-list.pl, src/blaze-log.pl,
+  src/blaze-make.pl, src/blaze-remove.pl, unix/blaze.sh, unix/man/man1/blaze.1,
+  windows/blaze.bat: Increased the version for the upcoming release.
+
+2010-10-25  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-make.pl: Corrected the sorting routine.
+
+  * src/blaze-config.pl, src/blaze-make.pl: The feed.fullposts now rely on the
+  use of <!-- break -->. (Issue 18)
+
+2010-10-24  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-list.pl: Corrected the sorting routine. (Issue 26)
+
+  * src/blaze-make.pl: Check whether to create a directory tree. (Issue 30)
+
+2010-10-16  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * INSTALL: One more change to the installation instructions.
+
+2010-10-15  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * INSTALL: Updated the installation instructions.
+
+  * Makefile: Updated Makefile to install the bash completion again.
+
+  * Makefile: Simplified the make rules a bit.
+
+2010-10-14  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * INSTALL, unix/man/man1/blaze.1: Updated the installation instructions.
+
+  * Makefile: Updated Makefile to install the ChangeLog as well.
+
+  * Makefile: Updated the Makefile rules.
+
+  * pod/blazeblogger.pod, pod/blazeintro.pod, pod/blazetheme.pod: Removed the
+  extra documentation.  These files will be replaced with a proper User Guide
+  in the next release.
+
+  * unix/bash_completion, unix/bash_completion/Makefile,
+  unix/bash_completion/blazeblogger: Moved the Bash completion file.
+
+  * unix/man/man1/blaze.1: Split OPTIONS into further subsections.
+
+2010-10-11  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * unix/man/man1/blaze.1: Added a manual page for the command wrapper.
+
+2010-09-27  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * Makefile, README, src/blaze-add.pl, src/blaze-config.pl, src/blaze-edit.pl,
+  src/blaze-init.pl, src/blaze-list.pl, src/blaze-log.pl, src/blaze-make.pl,
+  src/blaze-remove.pl, unix/blaze.sh, windows/blaze.bat: Increased version for
+  the next release.
+
+  * unix/bash_completion/Makefile: Updated the copyright notice.
+
+  * unix/bash_completion/INSTALL: Removed the file.  I have removed the
+  installation instructions for bash completion file, as they are now mostly
+  covered in the main INSTALL file.
+
+  * unix/blaze.sh: Updated the copyright notice.
+
+  * INSTALL: Minor cosmetic changes.  Really.
+
+  * README: Updated the general information.
+
+  * INSTALL: Updated the installation instructions.
+
+  * Makefile: Updated the copyright notice.
+
+2010-09-26  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-log.pl: Updated the documentation on the utility usage.
+
+  * src/blaze-list.pl, src/blaze-make.pl: Updated the documentation on the
+  utility usage.
+
+  * src/blaze-add.pl, src/blaze-list.pl: Updated the documentation on the
+  utility usage.  As for blaze-add, I have corrected the line breaking.
+
+  * src/blaze-edit.pl, src/blaze-remove.pl: Updated the documentation on the
+  utility usage.  Again, I have also fixed a formatting issue in the previously
+  updated file.
+
+  * src/blaze-add.pl, src/blaze-edit.pl: Updated the documentation on the
+  utility usage.  I have also fixed a minor formatting issue in the blaze-add
+  documentation.
+
+2010-09-24  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-add.pl: Updated the documentation on the utility usage.
+
+  * src/blaze-config.pl: Updated the documentation on the utility usage.
+
+  * src/blaze-init.pl: Updated information about the usage.  I have also
+  updated the copyright notice.
+
+2010-08-08  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-edit.pl, src/blaze-list.pl, src/blaze-log.pl, src/blaze-make.pl:
+  Corrected the strings.
+
+2010-08-06  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-list.pl, src/blaze-log.pl: Corrected strings.
+
+2010-08-01  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-add.pl, src/blaze-edit.pl, src/blaze-remove.pl: Corrected the
+  strings.
+
+  * src/blaze-add.pl, src/blaze-config.pl, src/blaze-edit.pl: Corrected the
+  strings.
+
+2010-07-31  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-add.pl, src/blaze-config.pl: Corrected the strings.
+
+  * src/blaze-config.pl, src/blaze-init.pl: Corrected the strings.
+
+  * src/blaze-init.pl: Corrected the strings.
+
+  * unix/blaze.sh: Updated the usage information.
+
+  * unix/blaze.sh: Removed blazeblogger-extras from the command wrapper.
+
+2010-07-28  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-make.pl: Changed the `-t' option to more predictable `-T'.
+
+2010-07-25  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * Makefile: Updated the Makefile.
+
+  * lang/ru_RU, lang/uk_UK: Added a couple of new language files.  Many thanks
+  to Dmitry Korzhevin!
+
+2010-07-06  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * unix/bash_completion/blazeblogger: Updated the bash completion (issue #8).
+
+  * unix/bash_completion/INSTALL: Updated the installation instructions.
+
+  * unix/bash_completion/Makefile: Adjusted the Makefile.
+
+  * unix/bash_completion/blazeblogger: Moved the bash completion to the
+  official package.
+
+  * Makefile, lang/fr_FR: Added the `fr_FR' language file.  Many thanks to
+  Romain for sharing his translation!
+
+  * src/blaze-config.pl, src/blaze-init.pl, src/blaze-make.pl: The `en_US' is
+  now the default option.
+
+  * Makefile, lang/en_US: Added the `en_US' language file.
+
+  * src/blaze-add.pl, src/blaze-config.pl, src/blaze-edit.pl: Updated the
+  documentation.
+
+  * src/blaze-add.pl, src/blaze-config.pl, src/blaze-edit.pl: Added the
+  possibility to use a different editor (issue #4).
+
+  * src/blaze-add.pl: Implemented the `user.nickname' option (issue #3).
+
+  * src/blaze-config.pl: Added the `user.nickname' option to the documentation.
+
+  * src/blaze-config.pl, src/blaze-init.pl: Added the `user.nickname' option to
+  the configuration.
+
+  * pod/blazeintro.pod, pod/blazetheme.pod, src/blaze-config.pl: Updated the
+  documentation.
+
+2010-06-25  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-make.pl: Added `core.doctype' option to create valid XHTML (issue
+  #7).
+
+  * src/blaze-config.pl, src/blaze-init.pl: Added `core.doctype' to the
+  configuration.
+
+2010-06-24  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-make.pl: Fixed the RSS feed placeholder replacement (issue #2). 
+  Many thanks to juytter for reporting this.
+
+2010-06-21  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * pod/blazeblogger.pod: Updated the documentation.  I have removed all
+  references to blazeblogger-extras from the documentation, as they are not
+  quite ready to be released.
+
+  * src/blaze-config.pl, src/blaze-init.pl: Removed `blaze-submit' from the
+  configuration.
+
+  * unix/blaze.sh: Commented out the blaze-extras related parts.
+
+2010-05-29  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * Makefile: Updated the Makefile.  It now installs recently added Portuguese
+  (Brazil) translation as well.
+
+  * pod/blazeintro.pod, src/blaze-add.pl, src/blaze-edit.pl: Removed backticks
+  from post/page headers (issue #9).
+
+  * lang/pt_BR: Added Portuguese (Brazil) translation (issue #12).
+
+2010-01-06  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * INSTALL: Updated installation instructions.  I really should not claim
+  something that is no longer true...
+
+  * src/blaze-add.pl, src/blaze-edit.pl, src/blaze-init.pl, src/blaze-make.pl:
+  Fixed backward compatibility with Perl 5.8.8.  Reported by Christopher
+  Hackenschmidt -- thanks!
+
+2009-12-27  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-list.pl: Made `--stat' a valid switch.  Sometimes Git is just too
+  addictive.
+
+2009-12-20  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-config.pl: Made blaze-config properly clear temporary file. 
+  Because of my absent-mindedness, there were still situations when the
+  temporary file -- though not needed any more -- was left behind unnoticed. I
+  just hope I did not miss anything this time.
+
+  * INSTALL: Updated the installation instructions.
+
+  * windows/blaze-add.bat, windows/blaze-config.bat, windows/blaze-edit.bat,
+  windows/blaze-init.bat, windows/blaze-list.bat, windows/blaze-log.bat,
+  windows/blaze-make.bat, windows/blaze-remove.bat, windows/blaze.bat: Added
+  command wrappers for Windows.  Many thanks to Sergey Kuznetsov, who has
+  kindly provided them.
+
+  * README: Written a README file.  Basically, most of the text was re-taken
+  from the project homepage to provide general overview what BlazeBlogger is
+  and and some pointers where to start.
+
+2009-12-18  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * INSTALL: Adjusted the installation instructions.
+
+  * Makefile: Adapted the Makefile to the latest changes.
+
+  * lang/cs_CZ, lang/de_DE, lang/en_GB, lang/es_ES, lang/eu_ES, lang/ja_JP:
+  Added language files to the distribution.  Besides having them available from
+  the homepage only as it used to be, language files are now part of the
+  official package too so that they are accessible even though the user is
+  currently offline.
+
+  * unix/blaze.sh, utils/blaze.sh: Renamed `utils' to more appropriate `unix'. 
+  This is mainly to imply clearly that the directory contains platform
+  dependent utilities.
+
+2009-12-08  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * pod/blazeblogger.pod: Updated the documentation.
+
+  * utils/blaze.sh: Added support for blaze-gallery.
+
+2009-12-04  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-config.pl, src/blaze-init.pl: Slightly extended the
+  documentation.  I have separated core options from those of extra utilities.
+
+  * utils/blaze.sh: Adjusted the command wrapper.
+
+  * Makefile: Updated the Makefile.
+
+  * pod/blazeblogger.pod: Updated the documentation.  I have separated core
+  utilities from the extra ones.
+
+  * pod/blaze-submit.pod, utils/blaze-submit.sh: Removed uploading utility. 
+  After a careful and long consideration, I have decided to move SKooDA's
+  blaze-submit utility to the separate package, blazeblogger-extras, instead of
+  distributing it as a part of core BlazeBlogger. Main reasons for this are as
+  follows:  a) Unlike the core utilities that try to depend on default
+  installation of Perl only, extra utilities tend to have additional
+  dependencies, such as lftp. Separating these two is going to make life easier
+  for both developers and packagers, as utility developers will have more
+  freedom in choosing whatever additional tools suit them best, and packagers
+  will know what exactly the additional dependencies are.  b) Similarly to the
+  previous point, while core utilities should remain platform independent,
+  there is no reason to restrict extra utilities from taking advantage of the
+  operating system.  c) Releases of BlazeBlogger should not depend on the
+  development of additional utilities and vice versa.  Nevertheless, support
+  for these utilities -- and by this I mean namely configuration options and
+  presence in the command wrapper -- will of course remain as it is.
+
+2009-11-19  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * TODO: Removed finished tasks from TODO list.
+
+  * src/blaze-make.pl: Implemented support for `feed.fullposts' option.  RSS
+  feed is now able to contain full post bodies instead of just excerpts as it
+  was so far.
+
+  * src/blaze-config.pl, src/blaze-init.pl: Added `feed.fullposts' option to
+  the configuration.  This is to enable including full content of the posts to
+  the RSS feed in the future, as requested on the mailing list.
+
+  * src/blaze-make.pl: Improved the RSS feed generation a bit.  I have added
+  the `encoding' option to the feed header and GUID element to the list of
+  items.
+
+  * utils/blaze.sh: Extended command wrapper.  I have documented the additional
+  commands and added another one, `man', for easier manual pages browsing.
+
+  * src/blaze-make.pl: Added proper checks the option is valid.  It should no
+  longer crash whenever the non-integer value is supplied to either blog.posts
+  or feed.posts.
+
+  * src/blaze-config.pl, src/blaze-make.pl: Implemented possibility to specify
+  number of feed items.
+
+  * pod/blazeintro.pod: Updated the introductory tutorial.
+
+  * src/blaze-make.pl: Adapted the utility to the latest configuration changes.
+   For the sake of backward compatibility, old configuration option is still
+  valid, but proper warning is now displayed.
+
+  * src/blaze-config.pl: Updated the documentation.
+
+  * src/blaze-config.pl, src/blaze-init.pl: Restructured configuration a little
+  bit.  I have moved RSS feed related settings to the separate category to ease
+  future maintenance as well as to make it more transparent for the user.  For
+  the backward compatibility reasons, I have also implemented silent correction
+  routines, so that most users will not even notice anything has changed at
+  all.
+
+2009-11-16  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * Makefile, utils/blaze-submit.sh: United the way things look.  I have
+  re-formatted the blaze-submit's output messages a bit so that they resemble
+  the core utilities.
+
+  * Makefile: Updated the Makefile accordingly.
+
+  * pod/blazeblogger.pod: Added blaze-submit to the list of available
+  utilities.
+
+  * pod/blaze-submit.pod: Added documentation for blaze-submit utility.
+
+2009-11-15  SKooDA <skooda@Ganymede.(none)>
+
+  * utils/blaze-submit.sh: Fixed small bug while blaze-submit -h (returning
+  exit 0 now)
+
+  * TODO, utils/blaze-submit.sh: -h switch in blaze-submit is now -H because of
+  creating space for help -h and --help now displays a simple help message
+
+2009-11-14  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-make.pl: Implemented navigation for blog index as well.
+
+2009-11-13  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * Makefile: Updated the Makefile.
+
+  * src/blaze-config.pl: Extended the documentation.  It now includes
+  description of submit utility configuration options as well.
+
+  * src/blaze-config.pl, src/blaze-init.pl, utils/blaze.sh: Polished the newly
+  adapted code a little bit.
+
+2009-11-11  SKooDA <skooda@Callisto.(none)>
+
+  * utils/blaze.sh: Fixed a small bug in blaze runner ;)
+
+  * src/blaze-config.pl, src/blaze-init.pl, utils/blaze-submit.sh: Added
+  blaze-submit support into a blaze-config tool
+
+2009-11-02  SKooDA <skooda@Callisto.(none)>
+
+  * src/blaze-init.pl, utils/blaze-submit.sh: Added the basic support for
+  configuration in blaze-submit tool
+
+  * utils/blaze-submit.sh, utils/blaze.sh: Created the pre-alpha of
+  blaze-submit utility
+
+2009-10-17  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * pod/blazeblogger.pod, src/blaze-edit.pl: Updated all references to recently
+  renamed command-line options.
+
+  * src/blaze-edit.pl: Revalued the command-line option names.  Similarly to
+  blaze-add, I have replaced `--html' with more accurate `--no-processor' and
+  slightly extended the description in the documentation.
+
+  * src/blaze-add.pl: Revalued the command-line option names.  I have changed
+  the `--html' command-line option to more appropriate `--no-processor' to make
+  it more accurate and less dependent on the understanding of BlazeBlogger
+  internals.
+
+2009-09-30  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-make.pl: Added a comment, just to be consistent.
+
+2009-09-29  Matthew Woehlke <mw_triad@users.sourceforge.net>
+
+  * src/blaze-make.pl: Don't copy .css if destination matches source.  I am
+  lazy, and want to be able to symlink my .css so I can edit it and see the
+  changes without having to re-run 'blaze make'. This allows 'blaze make' to
+  still work with the .css symlinked or hardlinked.
+
+2009-09-29  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * utils/blaze.sh: Fixed the version notice.
+
+  * Makefile, src/blaze-add.pl, src/blaze-config.pl, src/blaze-edit.pl,
+  src/blaze-init.pl, src/blaze-list.pl, src/blaze-log.pl, src/blaze-make.pl,
+  src/blaze-remove.pl, utils/blaze.sh: Increased version for an upcoming
+  release.
+
+2009-09-15  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * Makefile: Added version information to manual pages.
+
+2009-09-13  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * pod/blazeblogger.pod: Shortened the application description.
+
+  * pod/blazeblogger.pod: Updated documentation to comply with latest changes.
+
+  * src/blaze-list.pl, src/blaze-log.pl, src/blaze-make.pl,
+  src/blaze-remove.pl: Minor code clean-up.
+
+  * src/blaze-config.pl, src/blaze-init.pl: Extended the documentation.
+
+  * src/blaze-config.pl, src/blaze-init.pl: Revised the configuration options. 
+  The important changes are as follows:  * Removed unnecessary comments from
+  the default configuration. There is no need for options to be commented out,
+  since their values matches the defaults and will be uncommented with the
+  first use of blaze-config anyway. * The `core.editor' option is now empty by
+  default, so that the value of the $EDITOR environment variable can be
+  properly applied as expected and described in the documentation.
+
+2009-09-11  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-config.pl, src/blaze-init.pl: Replaced txt2tags with Markdown in
+  the documentation.
+
+  * src/blaze-init.pl: Made blaze-init create directories for raw files.  I
+  have also took the opportunity to substitute the rather crude
+  make_directories() subroutine with more sophisticated (and appropriate)
+  mkpath() from File::Path module.
+
+  * src/blaze-add.pl, src/blaze-edit.pl: Fixed disgraceful typing error.
+
+  * src/blaze-edit.pl: Added `--html' and `--force' command-line options.  This
+  way, you can edit your post directly in HTML despite the fact that the
+  core.processor is enabled in the configuration, or on the contrary force
+  creation of new raw file in case the post was written in HTML only and the
+  raw file there for does not exist.
+
+  * src/blaze-edit.pl: Made blaze-edit handle raw files.
+
+  * src/blaze-add.pl: Handled previously unconsidered condition.  If the
+  `--html' option is supplied, the validity of `core.processor' setting does
+  not matter.
+
+  * src/blaze-add.pl: Added `--html' command-line option.  This way you can
+  write your post/page in HTML directly even though you have `core.processor'
+  enabled in the configuration.
+
+2009-09-09  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * pod/blazetheme.pod, src/blaze-add.pl, src/blaze-edit.pl: Fixed minor
+  badness in POD.  Did you notice too that syntax highlighting in text editor
+  sometimes serves as an excellent debugger?
+
+  * pod/blazeintro.pod: Updated introductory tutorial.
+
+  * src/blaze-add.pl: Revised the error handling.  core.processor option is now
+  checked at the beginning of the script, so that it no longer displays warning
+  for every single added file; instead, the script is terminated immediately. I
+  have also reduced the amount of simultaneously displayed warnings to minimum.
+
+  * src/blaze-add.pl, src/blaze-edit.pl: Revised the post/page header
+  description.
+
+  * src/blaze-remove.pl: Made blaze-remove handle raw files.
+
+  * src/blaze-add.pl: Implemented basic support for preprocessor.
+
+2009-09-08  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-config.pl: Documented the newly added configuration option.
+
+  * src/blaze-init.pl: Added `core.processor' option to the default
+  configuration.
+
+  * src/blaze-config.pl: Added `core.processor' option to the configuration. 
+  This is the first step towards enabling people to write their content in
+  whatever markup suits them best.
+
+  * src/blaze-add.pl, src/blaze-config.pl, src/blaze-edit.pl: Made utilities
+  clean their mess.  Temporary file should now be removed properly once it is
+  not needed any more.
+
+2009-09-07  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * pod/blazeintro.pod: Updated the introductory material.
+
+  * src/blaze-init.pl: Made success report more specific.  Now you know exactly
+  whether the repository was created or recovered.
+
+  * src/blaze-config.pl: Improved display_option() subroutine.  blaze-config
+  now displays the default value correctly even though the requested option is
+  not actually found in the configuration file; I really don't think that
+  displaying nothing is expected behaviour.
+
+2009-09-06  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-add.pl, src/blaze-edit.pl: save_record() now makes sure the
+  target directories exist.
+
+2009-09-03  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * pod/blazetheme.pod, src/blaze-add.pl, src/blaze-edit.pl: Documented newly
+  added placeholder.
+
+  * src/blaze-make.pl: Added %tag[name]% placeholder.  This placeholder always
+  return valid relative path to the tag with given name.
+
+2009-08-29  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-add.pl, src/blaze-config.pl, src/blaze-edit.pl,
+  src/blaze-init.pl, src/blaze-list.pl, src/blaze-log.pl, src/blaze-make.pl,
+  src/blaze-remove.pl, utils/blaze.sh: Increased version for a release.
+
+  * pod/blazeintro.pod: Corrected typing error.
+
+2009-08-23  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-make.pl: Added proper substitution for `&hellip;'.  I tend to use
+  it a lot.
+
+  * src/blaze-make.pl: Improved RSS feed creation.  I have improved both HTML
+  stripping and length cutting, so that the produced output is much cleaner
+  now.
+
+2009-08-22  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-init.pl: Updated the default theme to comply with latest changes.
+
+  * pod/blazeintro.pod: Updated the introductory tutorial.
+
+  * src/blaze-add.pl, src/blaze-edit.pl: Extended documentation.  I have
+  extended the documentation of blaze-add and blaze-edit utilities to include
+  the list of supported placeholders and other special forms that can safely
+  appear in the body of the post or page.
+
+  * pod/blazetheme.pod: Documented recently added classes.
+
+  * pod/blazetheme.pod: Documented recently added placeholders.
+
+2009-08-21  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-make.pl: Made cross-referencing more fail-proof.  Referencing to
+  non-existing page or post should definitely not result in application error.
+
+  * src/blaze-config.pl: Documented newly added configuration options.
+
+  * src/blaze-make.pl: Made post information location optional.  You can now
+  set the location of post author, date of publishing, and tags by changing the
+  value of `post.author', `post.date', and `post.tags' options respectively.
+
+  * src/blaze-config.pl, src/blaze-init.pl: Added post related settings to the
+  configuration.  It is now possible to set the value of `post.author',
+  `post.date' and `post.tags' options to top, bottom, or none to change the
+  location of each of these post information.
+
+2009-08-20  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-init.pl, src/blaze-make.pl: Added `posted on' string to the
+  language file.
+
+  * src/blaze-make.pl: Added format_navigation() subroutine for easier
+  maintenance.
+
+  * src/blaze-make.pl: Added format_section() subroutine for easier
+  maintenance.
+
+  * src/blaze-make.pl: Performed a major code clean-up.  This is mainly to make
+  future maintenance easier.
+
+2009-08-15  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-add.pl, src/blaze-edit.pl: Added checks and warnings.  If
+  anything goes wrong, user should be properly notified about the steps that
+  are taken to correct it and, if really necessary, asked to correct them
+  himself.
+
+  * src/blaze-make.pl: Fixed empty tag URL handling.  Unless the URL is
+  properly derived from the tag name (i.e. it contains forbidden characters
+  only), MD5 sum of the tag name is used instead as a reasonable choice.
+
+2009-08-14  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-add.pl, src/blaze-edit.pl, src/blaze-make.pl: Improved
+  invalid/missing URL handling.  All utilities now takes similar steps to
+  correct the problem themselves and/or report it to the user, so that he can
+  fix it manually when necessary.
+
+2009-08-13  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-make.pl: Removed `taglink' class.  There is no need to include
+  this in every LI element when you can add it to the opening UL in the
+  template file.
+
+2009-08-12  Florian Pritz <bluewind@xssn.at>
+
+  * src/blaze-make.pl: put post numbers into links
+
+2009-08-13  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-make.pl: Fixed pages' order.
+
+  * src/blaze-list.pl, src/blaze-log.pl: Added `--number' and `--reverse'
+  command-line options.  This is mainly to make log and posts/pages browsing
+  more flexible, comfortable, and if possible, independent on additional
+  utilities, such as Unix `head' or `tail'.
+
+  * src/blaze-add.pl, src/blaze-edit.pl, src/blaze-list.pl: United the way
+  utilities handle invalid headers.
+
+  * src/blaze-make.pl: Improved missing/invalid header data handling.  Missing
+  or invalid header data are now repaired more thoroughly and the appropriate
+  warning message describing both what is wrong and how exactly was the problem
+  solved is displayed.
+
+2009-08-11  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-make.pl: Added %post[#]% and %page[#]% placeholders.  These
+  placeholders always return valid relative path to the post/page with ID #;
+  this is mainly to make the cross-referencing easier.
+
+2009-08-10  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-add.pl, src/blaze-edit.pl: Updated header data checks.  Since the
+  change of internal data representation, there is no need to forbid colon in
+  the author name or tags.
+
+  * src/blaze-list.pl, src/blaze-make.pl: Changed the internal record
+  representation.
+
+2009-08-09  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-make.pl: Fixed bug with trailing spaces.
+
+2009-08-02  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * Makefile, pod/blazeblogger.pod, src/blaze-add.pl, src/blaze-config.pl,
+  src/blaze-edit.pl, src/blaze-init.pl, src/blaze-list.pl, src/blaze-log.pl,
+  src/blaze-make.pl, src/blaze-remove.pl, utils/blaze.sh: Increased version for
+  a release.
+
+2009-08-01  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * pod/blazetheme.pod, src/blaze-init.pl, src/blaze-make.pl: Added <!--
+  page-title --> placeholder.  To be used mainly inside TITLE element, making
+  website navigation more transparent.
+
+2009-07-29  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * pod/blazeintro.pod: Slightly extended introductory tutorial.
+
+2009-07-27  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-init.pl: Added further verbosity level.  Similarly to blaze-make,
+  blaze-init is now capable of displaying list of created files.
+
+  * pod/blazetheme.pod, src/blaze-init.pl, src/blaze-make.pl: Improved produced
+  output.  I have revised generated classes in an attempt to make themes
+  creation a little more flexible.
+
+2009-07-22  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-make.pl: Minor bugfix.
+
+  * src/blaze-add.pl, src/blaze-config.pl, src/blaze-edit.pl,
+  src/blaze-list.pl, src/blaze-log.pl, src/blaze-make.pl, src/blaze-remove.pl:
+  Improved error handling.  I have also rephrased some error messages to make
+  them sound more friendly.
+
+2009-07-21  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-config.pl: Code clean-up.  I have unified the subroutine names,
+  added read_conf() and rewritten warning and error handling, so that the code
+  is now more predictable and much easier to maintain.
+
+  * src/blaze-config.pl, src/blaze-init.pl: Unified subroutine naming.
+
+  * src/blaze-add.pl, src/blaze-edit.pl, src/blaze-list.pl, src/blaze-log.pl,
+  src/blaze-make.pl: Added read_conf() subroutine for easier maintenance.
+
+  * src/blaze-add.pl, src/blaze-config.pl, src/blaze-edit.pl,
+  src/blaze-init.pl, src/blaze-list.pl, src/blaze-log.pl, src/blaze-remove.pl:
+  Added display_warning() subroutine.  This is mainly to make it easier to
+  unify the look of warning messages.
+
+  * pod/blazeblogger.pod, src/blaze-list.pl, src/blaze-make.pl: Modified
+  command-line option from `-i' to `-I'.  This way, `-i' remains reserved for
+  the interactive mode in case it would be required in the future.
+
+2009-07-20  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * utils/blaze.sh: Improved the command wrapper.  To make its use as intuitive
+  as possible, it now accepts request to display usage of specific command in
+  both `blaze COMMAND --help' and more usual `blaze help COMMAND' forms.
+
+  * src/blaze-make.pl: Insignificant cosmetic change.  No pages nor latest
+  posts lists contain superfluous line break any longer. (I warned you this was
+  insignificant.)
+
+  * src/blaze-make.pl: Minor code clean-up.  I have begun code refactoring of
+  the static content creating utility to make future maintenance and overall
+  code growth slightly less painful. I have also fixed few bugs in the process.
+
+2009-07-17  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-init.pl, src/blaze-make.pl: Minor change in the default language
+  file.
+
+  * src/blaze-make.pl: Fixed RSS feed creation.  There is no need to include
+  the index file itself to the post link, especially when its extension is
+  optional and therefore every change may confuse some RSS readers.  I have
+  also changed the missing `blog.url' option warning a bit, so that it actually
+  makes more sense.
+
+2009-07-15  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * pod/blazeintro.pod: Extended introductory tutorial.  I have tried to
+  explain further the overall concept of the repository. I have also added a
+  note about the recently added command wrapper.
+
+  * pod/blazeintro.pod: Extended introductory tutorial.  I have added
+  `Observing the Repository History', `Changing the Blog Theme' and `Changing
+  the Blog Localization' sections and significantly improved the pages handling
+  description.
+
+2009-07-14  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * Makefile, pod/blazeblogger.pod, pod/blazestyle.pod, pod/blazetheme.pod,
+  src/blaze-make.pl: Merged theme and stylesheet creation description.  There
+  is no need to have these in two separate files.
+
+2009-07-13  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-make.pl, utils/blaze.sh: Fixed tag order.  Tags that are listed
+  in post information are now properly sorted.
+
+2009-07-10  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * Makefile, utils/blaze.sh: Added command wrapper.  It is now possible to
+  type both `blaze-init' and (personally more comfortable) `blaze init'.
+
+  * src/blaze-list.pl: Fixed colon handling in header data.  blaze-list should
+  no longer display corrupted data when `:' is used in one of the header
+  fields.
+
+2009-07-09  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-add.pl: Added plural variants of commands to the documentation.
+
+  * pod/blazeblogger.pod, src/blaze-remove.pl: Made it possible to remove
+  multiple records at once.
+
+  * src/blaze-add.pl: Optimized choose_id() subroutine.  When adding multiple
+  files, it now remembers the state from the previous lookup and continues
+  where it ended the last time.
+
+2009-07-06  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * pod/blazeblogger.pod, src/blaze-config.pl, src/blaze-list.pl: Updated usage
+  information.
+
+  * src/blaze-make.pl: Unified the look of created files' paths.
+
+  * pod/blazeintro.pod, pod/blazetheme.pod, src/blaze-add.pl,
+  src/blaze-edit.pl, src/blaze-init.pl, src/blaze-list.pl, src/blaze-make.pl,
+  src/blaze-remove.pl: Unified terminology.  Pages are now consistently
+  referred to as `pages' instead of `static pages' or even `static content' to
+  avoid obvious confusion.
+
+2009-07-05  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-add.pl: Fixed inefficiency in post/page adding utility. 
+  choose_id() no longer iterates through all used IDs once it founds the first
+  available one.
+
+2009-07-03  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * pod/blazeintro.pod: Extended introductory tutorial.  Introductory text now
+  covers newly added coloured output support, and includes clear example of how
+  the blog post should look.
+
+  * src/blaze-make.pl: Fixed duplicate tags handling.  Duplicate tags are no
+  longer accepted carelessly and should be properly removed from listing.
+
+2009-07-02  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-make.pl: Fixed tag generation.  Tags are now properly converted
+  to lower case as they should be.
+
+  * src/blaze-make.pl: Changed the generating order.  Style sheet is now copied
+  first, so that even corrupted pages look the way they should.
+
+2009-06-27  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-log.pl: Added forgotten comment.
+
+  * src/blaze-list.pl, src/blaze-log.pl: Fixed bug introduced when adding
+  colour support.  Both utilities now respond properly again when invoked
+  outside the BlazeBlogger repository. Furthermore, configuration is now read
+  only when necessary, i.e. when no `--color' nor `--no-color' is specified on
+  the command line.
+
+2009-06-26  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-list.pl: Added basic colour support to blaze-list.  If the
+  `color.list' option is set to `true' or `auto' (as in git), the pages/posts
+  listing is now displayed in fancy colours. I have also added a couple of
+  command-line options, `--color' and `--no-color', making it possible to force
+  either option no matter what is set in the configuration file.
+
+2009-06-25  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-log.pl: Improved colour support of blaze-log.  I have added
+  couple of command-line options, `--color' and `--no-colour', making it
+  possible to force either option no matter what is set in the configuration
+  file.
+
+  * src/blaze-log.pl: Added basic colour support to blaze-log.  If the
+  `color.log' option is set to `true' or `auto' (as in git), the repository log
+  is now displayed in fancy colours.
+
+  * src/blaze-config.pl, src/blaze-init.pl: Added colour settings to the
+  configuration.  You can now set the `color.list' and `color.log' options to
+  true to enable coloured output of blaze-list and blaze-log utilities
+  respectively.
+
+  * src/blaze-list.pl: Added `--stats' command-line option.  blaze-list is now
+  able to show repository statistics instead of posts/pages when requested.
+
+  * src/blaze-config.pl: Fixed minor typing error.
+
+  * pod/blazetheme.pod, src/blaze-make.pl: Added <!-- posts --> placeholder. 
+  It is now possible to list recent posts in a sidebar.
+
+2009-06-15  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-add.pl, src/blaze-config.pl, src/blaze-edit.pl,
+  src/blaze-init.pl, src/blaze-list.pl, src/blaze-log.pl, src/blaze-make.pl,
+  src/blaze-remove.pl: Increased version for a release.
+
+2009-06-11  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-add.pl: Made it recognise both `--tags' and `--tag' options. 
+  This is mainly to compensate possible confusion, as different utilities
+  accept different (i.e. singular or plural) variant.
+
+  * src/blaze-list.pl: Added `--tag' command-line option.  It is now possible
+  to look records up by their tags.
+
+2009-06-10  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-make.pl: United the look of generated pretty URLs.  I have
+  removed trailing forward slash from tags and months listings' links, as there
+  was absolutely no reason to have it there.
+
+  * pod/blazeintro.pod: Updated the introductory text.
+
+  * pod/blazetheme.pod, src/blaze-init.pl, src/blaze-make.pl: Added %home%
+  placeholder.  Again, this is largely to make it easier to create off-line
+  content.
+
+  * src/blaze-make.pl: Added `--full-paths' command-line option.  This is
+  mainly to enable easier creation of off-line content.
+
+2009-04-26  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-add.pl, src/blaze-config.pl, src/blaze-edit.pl,
+  src/blaze-init.pl, src/blaze-list.pl, src/blaze-log.pl, src/blaze-make.pl,
+  src/blaze-remove.pl: Increased version for a release.
+
+  * pod/blazeblogger.pod: Updated overall usage information.
+
+2009-04-02  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * INSTALL, src/blaze-add.pl, src/blaze-config.pl, src/blaze-edit.pl,
+  src/blaze-list.pl, src/blaze-make.pl, src/blaze-remove.pl: Got rid of the
+  Config::IniHash dependency.  BlazeBlogger now depends on core libraries only!
+  Hopefully, it fixes more problems than it creates...
+
+2009-03-27  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-add.pl, src/blaze-config.pl, src/blaze-edit.pl,
+  src/blaze-init.pl, src/blaze-make.pl: Minor usability improvements.  In the
+  configuration, it is now possible to specify editor along with its
+  command-line options, e.g. `gvim -f'. I have also changed the `more' to
+  better looking `Read more' in the default localization file.
+
+2009-03-19  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * pod/blazeintro.pod, src/blaze-config.pl, src/blaze-init.pl: Updated
+  documentation.
+
+  * src/blaze-remove.pl: Added `--interactive' command-line option.  Like cp or
+  rm Unix commands, running the page/post removing utility with `-i' option
+  makes it ask for confirmation before the actual removal, making it less easy
+  to accidentally delete something you did not intend to.
+
+2009-03-16  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-make.pl: Fixed RSS bug I created when fixing RSS bug.  ...and
+  that's not funny.
+
+  * pod/blazeintro.pod, src/blaze-add.pl, src/blaze-config.pl,
+  src/blaze-edit.pl, src/blaze-init.pl, src/blaze-list.pl, src/blaze-log.pl,
+  src/blaze-make.pl, src/blaze-remove.pl: Corrected minor inaccuracy in the
+  tutorial.  I have also marked this version as a second release candidate.
+
+2009-03-14  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-make.pl: Added `pubDate' to RSS feed.  Well, this should have
+  been done right from the beginning.
+
+2009-03-10  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * pod/blazeintro.pod, pod/blazetheme.pod, src/blaze-init.pl,
+  src/blaze-make.pl: Got rid of ugly <!--root-->, replacing it with %root%. 
+  <!-- root --> will be completely removed with next release, if I do not
+  forget.
+
+2009-03-09  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-make.pl: Got rid of the `--force' option in static content
+  generating utility.  The default preservation of the stylesheet and the
+  workaround with `--force' command were simply too obscure and unexpected to
+  be worth it, so I have simply replaced them both with `--no-css' option.
+
+  * pod/blazeintro.pod, pod/blazestyle.pod, pod/blazetheme.pod,
+  src/blaze-make.pl: A <!--root--> placeholder can now safely appear in the
+  page/post body.  The main reason for this is to make it easier (and much more
+  flexible) to link images, videos and other files from posts/pages.
+
+  * pod/blazeintro.pod, src/blaze-init.pl, src/blaze-make.pl: Added index page
+  for tag list.  This should have been implemented long time ago, but somehow I
+  forgot and did not even notice.
+
+2009-03-08  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * pod/blazeintro.pod: Corrected minor inaccuracy in the tutorial.  The
+  `Browsing the Blog Repository' section now mentions correct `--pages' option
+  instead of old `--page'.
+
+  * pod/blazeblogger.pod, src/blaze-add.pl, src/blaze-config.pl,
+  src/blaze-edit.pl, src/blaze-init.pl, src/blaze-list.pl, src/blaze-log.pl,
+  src/blaze-make.pl, src/blaze-remove.pl: Updated BUGS section in
+  documentation.  I have also increased version and marked it as a first
+  release candidate.
+
+2009-03-07  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-add.pl, src/blaze-edit.pl, src/blaze-list.pl,
+  src/blaze-remove.pl: Minor usability improvement.  All utilities now accept
+  `page' and `post' options in both singular and plural font in order to reduce
+  annoying typing errors.
+
+  * src/blaze-log.pl, src/blaze-make.pl: Minor code clean-up.
+
+  * src/blaze-list.pl: Added `--short' option to repository browsing utility.
+
+  * src/blaze-list.pl: Added `--title' option to repository browsing utility. 
+  It is now possible to look the record up by the keyword(s) in its title.
+
+  * src/blaze-list.pl: Slightly rewrote the repository browsing utility.  *
+  Changed `--page' and `--post' options to their plural form. * Listed records
+  are now sorted properly in a descending order (i.e. newest are listed first).
+
+  * pod/blazeblogger.pod, src/blaze-log.pl: Updated documentation.
+
+  * Makefile: Updated Makefile.
+
+  * src/blaze-log.pl: Implemented a simple log browsing utility.
+
+  * src/blaze-add.pl, src/blaze-edit.pl, src/blaze-init.pl,
+  src/blaze-remove.pl: Simplified logging.  The formatting should be
+  responsibility of the log browsing utility, not those who write the record.
+
+2009-03-06  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-make.pl: Implemented `--force' command-line option.  Static
+  content generating utility is now capable of rewriting already existing style
+  sheet.
+
+2009-03-01  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-init.pl: Updated repository creating/recovering utility.
+
+  * pod/blazeintro.pod: Updated tutorial reflecting the latest improvements.
+
+  * src/blaze-config.pl: Extended command-line options of the configuring
+  utility.  Added `--edit' option for opening well-commented, user friendly
+  config file in the external text editor in order to make the whole
+  editing-by-hand less obscure and a little bit more comfortable experience.
+
+2009-02-28  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-config.pl: Slightly rewritten configuring utility.  The main
+  reason for this was to make the upcoming improvements easier to implement.
+
+  * pod/blazeintro.pod: Extended tutorial as a reaction to user feedback.
+
+  * src/blaze-edit.pl: Updated post/page editing utility.  Updated header
+  information and save_record() function according to the adding utility.
+
+  * src/blaze-add.pl: Extended command-line options of the post/page adding
+  utility.  You can now specify the title, author, date, tags and url directly
+  on the command-line; this is especially useful when you add existing files
+  with missing header.
+
+  * Makefile, docs/blazeblogger.pod, docs/blazeintro.pod, docs/blazestyle.pod,
+  docs/blazetheme.pod, pod/blazeblogger.pod, pod/blazeintro.pod,
+  pod/blazestyle.pod, pod/blazetheme.pod: Moved POD files from docs/ to more
+  appropriate pod/.
+
+  * docs/blazeintro.pod: Updated documentation.
+
+2009-02-27  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * INSTALL, src/blaze-add.pl: Minor changes.  * Fixed regexp in the page/post
+  adding utility so that Perl interpreter no longer displays warnings about
+  obsolete feature. * Added information about Cygwin to the installation
+  instructions.
+
+  * src/blaze-init.pl: Implemented `--force' command-line option.  Repository
+  creating/recovering utility now no longer rewrites already existing files
+  unless told otherwise.
+
+2009-02-26  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-init.pl, src/blaze-make.pl: Changed the default theme and style. 
+  I have tried to design a good looking, fresh and modern theme more suitable
+  for blogging purposes while keeping it as simple as possible--it still does
+  not contain any images, everything is just a plain CSS2!
+
+2009-02-23  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-init.pl: Fixed indenting.
+
+2009-02-21  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-list.pl, src/blaze-make.pl: Fixed usage and version information.
+
+2009-02-16  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-make.pl: Cosmetic changes.
+
+  * Makefile: Updated Makefile.
+
+  * docs/blazeblogger.pod, docs/blazestyle.pod, docs/blazetheme.pod: Documented
+  the process of writing BlazeBlogger stylesheet.
+
+  * src/blaze-make.pl: Fixed typing error preventing the execution of the
+  script.
+
+  * src/blaze-make.pl: Improved behaviour of the static content generator. 
+  Warning messages, i.e. those sent to the STDERR, are no longer being silenced
+  by the `--quiet' option.
+
+  * src/blaze-add.pl, src/blaze-edit.pl: Worthless cosmetic changes.  * Fixed
+  mistyped comment. * Added space where it belongs.  (See? I told you.)
+
+  * src/blaze-edit.pl: Improved behaviour of the post/page editing utility.  *
+  Implemented checks that the post/page has been actually changed before saving
+  it back to the repository. * Warning messages, i.e. those sent to the STDERR,
+  are no longer being silenced by the `--quiet' option.
+
+2009-02-15  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-add.pl: Improved behaviour of the post/page adding utility.  *
+  Implemented checks that the post/page template has been actually changed
+  before adding it to the repository. * Warning messages, i.e. those sent to
+  the STDERR, are no longer being silenced by the `--quiet' option.
+
+  * src/blaze-add.pl: Fixed missing LF character.
+
+  * src/blaze-add.pl, src/blaze-edit.pl, src/blaze-init.pl, src/blaze-make.pl,
+  src/blaze-remove.pl: Minor code clean-up.  * Post adding utility have been
+  slightly refactored to simplify the future maintenance. * Some variable names
+  were changed in order to make it obvious what they represent. * The missing
+  configuration file now does not terminate the script with error code as it
+  used to and only the warning message is displayed instead. This applies to
+  language file as well.
+
+2009-02-14  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-list.pl: Minor bugfix in the browsing utility.
+
+2009-02-13  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-init.pl: Fixed the default CSS file.  * Changed the default width
+  to 760 pixels. * Made sidebar aligned properly. * United the font families.
+
+2009-02-11  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-add.pl, src/blaze-config.pl, src/blaze-edit.pl,
+  src/blaze-init.pl, src/blaze-list.pl, src/blaze-make.pl, src/blaze-remove.pl:
+  Increased version.
+
+  * src/blaze-init.pl, src/blaze-make.pl: Added `read more' link at the end of
+  the excerpts.
+
+2009-02-10  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * src/blaze-add.pl, src/blaze-edit.pl: Added information about the <!-- break
+  --> mark.
+
+  * docs/blazetheme.pod, src/blaze-init.pl, src/blaze-make.pl: Added <!-- root
+  --> placeholder.
+
+  * src/blaze-init.pl: Fixed minor bug in the default style sheet.
+
+  * src/blaze-add.pl, src/blaze-config.pl, src/blaze-edit.pl,
+  src/blaze-init.pl, src/blaze-list.pl, src/blaze-make.pl, src/blaze-remove.pl:
+  Increased version for a release.  Also fixed the trailing forward slash bug
+  in the RSS.
+
+  * src/blaze-add.pl, src/blaze-edit.pl, src/blaze-init.pl, src/blaze-list.pl,
+  src/blaze-make.pl: Added Gray Lines as a default blog theme.
+
+2009-02-08  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * Makefile: Updated Makefile.
+
+  * src/blaze-list.pl: Removed tags from pages listing.
+
+  * docs/blazeblogger.pod, docs/blazeintro.pod: Updated documentation.
+
+  * src/blaze-list.pl: Created record browsing utility.
+
+2009-02-06  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * Makefile, docs/blazeblogger.pod, docs/blazetheme.pod: Added documentation
+  on how to create the theme.
+
+  * src/blaze-make.pl: Implemented tag links.  The `tagged as' notice now
+  contains actual links instead of just tag names.
+
+2009-02-05  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * Makefile: Updated Makefile.
+
+  * docs/blazeintro.pod: Added document with a brief introduction to
+  BlazeBlogger.
+
+  * docs/blazeblogger.pod: Added BlazeBlogger documentation file.
+
+2009-02-04  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * INSTALL: Added installation instructions.
+
+  * src/blaze-config.pl, src/blaze-init.pl, src/blaze-make.pl: Stylesheet is
+  now preserved when present.  This is mainly to make the whole theming process
+  more user-friendly, keeping the local modifications intact as long as the
+  file is there.
+
+  * src/blaze-make.pl: Added `--no-index' command line option.
+
+2009-01-30  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * Makefile: Created makefile for easier installation.
+
+  * AUTHORS: Added list of authors and (empty) todo list.
+
+  * blaze-add.pl, blaze-config.pl, blaze-edit.pl, blaze-init.pl, blaze-make.pl,
+  blaze-remove.pl, src/blaze-add.pl, src/blaze-config.pl, src/blaze-edit.pl,
+  src/blaze-init.pl, src/blaze-make.pl, src/blaze-remove.pl: Moved source files
+  to the separate directory.
+
+  * COPYING, FDL: Added licenses.  * GNU General Public License, version 3 for
+  source codes. * GNU Free Documentation License, version 1.3 for
+  documentation.
+
+  * blaze-add.pl, blaze-config.pl, blaze-edit.pl, blaze-init.pl,
+  blaze-remove.pl: Added BUGS section to the POD and modified warning messages.
+
+  * blaze-make.pl: Added POD and removed forgotten variable declaration.
+
+2009-01-29  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * blaze-make.pl: (Hopefully) fixed a RSS bug.
+
+  * blaze-make.pl: Added short command line options.
+
+  * blaze-make.pl: Implemented per year browsing.
+
+  * blaze-make.pl: Implemented a simple cache to speed things up.
+
+  * blaze-make.pl: Fixed stylesheet handling.
+
+2009-01-28  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * blaze-config.pl, blaze-init.pl, blaze-make.pl: Implemented RSS feed
+  generation.  Because of this, I had to add the blog.url option to the
+  configuration; unless specified, the RSS feed creation is not allowed and is
+  disabled automatically.
+
+  * blaze-make.pl: Implemented index page generation.
+
+  * blaze-config.pl, blaze-init.pl, blaze-make.pl: Implemented support for
+  localization.  The blog is now fully translatable via .blaze/lang/* files and
+  respective option in the configuration file. Both init and config scripts
+  have been updated to support this feature.  Along with the localization, an
+  e-mail have been made useful by adding a corresponding theme placeholder.
+
+  * blaze-add.pl, blaze-config.pl, blaze-edit.pl, blaze-init.pl,
+  blaze-remove.pl: Corrected typing error (shame on me).
+
+  * blaze-make.pl: Implemented per-tag browsing.  Among other significant
+  changes and improvements, most important are:  * the generating process of
+  pages, posts, tags and RSS feed is now completely optional; further more,
+  disabling posts disables tags and RSS as well, while disabling both posts and
+  pages results in doing nothing as would be expected; * verbosity level is now
+  three-stage: unless an error has occurred, (a) print no messages at all, (b)
+  print confirmations as well as warnings, or (c) print each created file with
+  full path.
+
+  * blaze-make.pl: Implemented per-month browsing.
+
+2009-01-26  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * blaze-make.pl: Fixed tags correction bug.  There was a misplaced
+  superfluous spaces and commas stripping, so that when no forbidden character
+  was spotted, no correction took place at all.
+
+  * blaze-add.pl, blaze-edit.pl, blaze-init.pl, blaze-remove.pl: Got rid of the
+  strftime() as it was not worth it.
+
+  * blaze-make.pl: Fixed the page, post and tag listings.  Made it less cryptic
+  and generally cleaner; for the sake of readability, I also got rid of the
+  POSIX strftime() function as it tended to complicate matters.
+
+  * blaze-make.pl: Made the page generation a tiny bit sensible.  Got rid of
+  the write_to_file function and made the theme processing function do the
+  trick with little less juggling with file contents.
+
+2009-01-25  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * blaze-add.pl, blaze-edit.pl: Added header data checks.  Both adding and
+  editing utilities now produce warnings when they detect invalid data (i.e.
+  missing information or forbidden characters). However, unlike the similar
+  function in the content building utility from which it was adapted, the
+  responsible function does not try to correct the erroneous data, leaving it
+  completely on the user.
+
+  * blaze-init.pl: Updated the repository creating utility.  * Since the theme
+  and style file extensions are no longer optional, I had to update the default
+  configuration file comments accordingly. * I have added a simple default
+  theme. Although it was ment as a temporary solution for testing purposes
+  only, I tried hard to make it reasonable enough as a possible final solution.
+  The stylesheet is, however, still missing.
+
+  * blaze-config.pl: Updated the usage information.  For the sake of
+  simplicity, theme and style file extensions are no longer optional.
+
+  * blaze-make.pl: Added very basic pages and posts rendering.  Most of this
+  code is probably going to be rewritten again, because the current state is
+  not only rough and ugly with quite a few redundant parts, but it also does
+  not work exactly the way it should. Nevertheless, it is hopefully a good step
+  towards a working prototype.
+
+  * blaze-config.pl: A little code clean-up of the configuration utility.
+
+  * blaze-make.pl: Created an outline of the static content generator.
+
+2009-01-23  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * blaze-remove.pl: Partly rewrited the post/page removing utility.  Among
+  minor, more or less cosmetic changes, the most important are:  * the much
+  complete set of command-line options with more obvious names and description;
+  * making functions return values in order to recognise success.
+
+  * blaze-edit.pl: Partly rewritten the post/page editing utility.  Among
+  various cosmetic changes, the most important are:  * the much complete set of
+  command-line options with more obvious names and description; * addition of
+  the url option to be used for pretty url later; * addition of the
+  read_record() and save_record() functions to simplify matters by creation of
+  another abstraction layer; * making the functions (almost) independent on
+  global variables, because it is not only ugly, but potentialy unpredictable;
+  there are still $blogdir and $verbose, but those make sense (at least to me)
+  and does not produce unexpected results; * making functions return values
+  instead of just exiting with error code, at least at places where this
+  behaviour is not desirable.
+
+  * blaze-add.pl: Partly rewrited the post/page adding utility.  Among various
+  cosmetic changes, the most important are:  * the much complete set of
+  command-line options with more obvious names and description; * addition of
+  the url option to be used for pretty url later; * addition of save_record()
+  function to simplify matters creating another abstraction layer; * making the
+  functions (almost) independent on global variables, because it is not only
+  ugly, but potentialy unpredictable; there are still $blogdir and $verbose,
+  but those make sense (at least to me) and does not produce unexpected
+  results; * making functions return values instead of just exiting with error
+  code, at least at places where this behaviour is not desirable.
+
+  * blaze-config.pl: Partly rewrited the configuration utility.  Among minor,
+  more or less cosmetic changes, the most important are:  * the much complete
+  set of command-line options with more obvious names and description; *
+  addition of the core.extension option and its documentation; * making
+  functions return values in order to recognise success.
+
+  * blaze-init.pl: Partly rewrited the repository creating utility.  Among
+  minor cosmetic changes, the most important are:  * the much complete set of
+  command-line options with more obvious names and description; * addition of
+  the default configuration file template with explanatory comments for those,
+  who do not want to use the configuration utility; * making the functions
+  (almost) independent on global variables, because it is not only ugly, but
+  potentialy unpredictable; there are still $blogdir and $verbose, but those
+  make sense (at least to me) and does not produce unexpected results; * making
+  functions return values instead of just exiting with error code, at least at
+  places where this behaviour is not desirable.
+
+2009-01-18  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * blaze-edit.pl: Fixed typing errors.  I should really pay more attention to
+  the built-in documentation, especially when I copy similar parts from other
+  files.
+
+2009-01-17  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * blaze-add.pl: Restructured command-line options.
+
+  * blaze-edit.pl: Made it more consistent and comfortable.
+
+  * blaze-add.pl, blaze-config.pl, blaze-edit.pl, blaze-remove.pl: Added
+  (rather silly) check the repository is present.
+
+2009-01-16  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * blaze-add.pl: Created record adding utility.
+
+  * blaze-config.pl, blaze-edit.pl: Minor changes.
+
+  * blaze-edit.pl: Created record editing utility.
+
+  * blaze-remove.pl: Extended command-line options.
+
+2009-01-15  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * blaze-remove.pl: Created record deletion utility.
+
+  * blaze-config.pl, blaze-init.pl: Various minor cosmetic changes.
+
+  * blaze-config.pl: Added POD.
+
+  * blaze-config.pl, blaze-init.pl: Created configuration utility.
+
+2009-01-11  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * blaze-init.pl: Added POD.
+
+  * blaze-init.pl: Added verbose success confirmation.
+
+2009-01-10  Jaromir Hradilek <jhradilek@gmail.com>
+
+  * blaze-init.pl: Initial import.
