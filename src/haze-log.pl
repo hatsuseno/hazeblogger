@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
 
-# blaze-log - displays the BlazeBlogger repository log
+# haze-log - displays the hazeblogger repository log
 # Copyright (C) 2009-2011 Jaromir Hradilek
 
 # This program is  free software:  you can redistribute it and/or modify it
@@ -72,7 +72,7 @@ sub display_help {
 Usage: $NAME [-cqrsCV] [-b DIRECTORY] [-n NUMBER]
        $NAME -h|-v
 
-  -b, --blogdir DIRECTORY     specify a directory in which the BlazeBlogger
+  -b, --blogdir DIRECTORY     specify a directory in which the hazeblogger
                               repository is placed
   -n, --number NUMBER         specify a number of log entries to be listed
   -s, --short                 display each log entry on a single line
@@ -142,7 +142,7 @@ sub read_ini {
 # Read the content of the configuration file:
 sub read_conf {
   # Prepare the file name:
-  my $file = catfile($blogdir, '.blaze', 'config');
+  my $file = catfile($blogdir, '.haze', 'config');
 
   # Parse the file:
   if (my $conf = read_ini($file)) {
@@ -198,7 +198,7 @@ sub display_log {
   my $count = 0;
 
   # Prepare the file name:
-  my $file  = catfile($blogdir, '.blaze', 'log');
+  my $file  = catfile($blogdir, '.haze', 'log');
 
   # Open the log file for reading:
   open(LOG, "$file") or return 0;
@@ -273,8 +273,8 @@ exit_with_error("Invalid option `$ARGV[0]'.", 22) if (scalar(@ARGV) != 0);
 
 # Check whether the repository is present, no matter how naive this method
 # actually is:
-exit_with_error("Not a BlazeBlogger repository! Try `blaze-init' first.",1)
-  unless (-d catdir($blogdir, '.blaze'));
+exit_with_error("Not a hazeblogger repository! Try `haze-init' first.",1)
+  unless (-d catdir($blogdir, '.haze'));
 
 # Unless specified on the command line, read the color setup from the
 # configuration file:
@@ -300,17 +300,17 @@ __END__
 
 =head1 NAME
 
-blaze-log - displays the BlazeBlogger repository log
+haze-log - displays the hazeblogger repository log
 
 =head1 SYNOPSIS
 
-B<blaze-log> [B<-cqrsCV>] [B<-b> I<directory>] [B<-n> I<number>]
+B<haze-log> [B<-cqrsCV>] [B<-b> I<directory>] [B<-n> I<number>]
 
-B<blaze-log> B<-h>|B<-v>
+B<haze-log> B<-h>|B<-v>
 
 =head1 DESCRIPTION
 
-B<blaze-log> displays the content of the BlazeBlogger repository log.
+B<haze-log> displays the content of the hazeblogger repository log.
 
 =head1 OPTIONS
 
@@ -318,7 +318,7 @@ B<blaze-log> displays the content of the BlazeBlogger repository log.
 
 =item B<-b> I<directory>, B<--blogdir> I<directory>
 
-Allows you to specify a I<directory> in which the BlazeBlogger repository
+Allows you to specify a I<directory> in which the hazeblogger repository
 is placed. The default option is a current working directory.
 
 =item B<-n> I<number>, B<--number> I<number>
@@ -327,11 +327,11 @@ Allows you to specify a I<number> of log entries to be listed.
 
 =item B<-s>, B<--short>
 
-Tells B<blaze-log> to display each log entry on a single line.
+Tells B<haze-log> to display each log entry on a single line.
 
 =item B<-r>, B<--reverse>
 
-Tells B<blaze-log> to display log entries in reverse order.
+Tells B<haze-log> to display log entries in reverse order.
 
 =item B<-c>, B<--color>
 
@@ -365,7 +365,7 @@ Displays version information and exits.
 
 =over
 
-=item I<.blaze/log>
+=item I<.haze/log>
 
 A file containing the repository log.
 
@@ -375,7 +375,7 @@ A file containing the repository log.
 
 List the whole repository history:
 
-  ~]$ blaze-log
+  ~]$ haze-log
   Date: Sun Jul 25 16:48:22 2010
 
       Edited the page with ID 5.
@@ -388,10 +388,10 @@ List the whole repository history:
 
 List the whole repository history in reverse order:
 
-  ~]$ blaze-log -r
+  ~]$ haze-log -r
   Date: Tue Feb 10 00:40:16 2009
 
-      Created/recovered a BlazeBlogger repository.
+      Created/recovered a hazeblogger repository.
 
   Date: Tue Feb 10 01:06:44 2009
 
@@ -401,18 +401,18 @@ List the whole repository history in reverse order:
 
 Display the very first log entry on a single line:
 
-  ~]$ blaze-log -rs -n 1
-  Tue Feb 10 00:40:16 2009 - Created/recovered a BlazeBlogger repository.
+  ~]$ haze-log -rs -n 1
+  Tue Feb 10 00:40:16 2009 - Created/recovered a hazeblogger repository.
 
 =head1 SEE ALSO
 
-B<blaze-init>(1), B<blaze-config>(1)
+B<haze-init>(1), B<haze-config>(1)
 
 =head1 BUGS
 
 To report a bug or to send a patch, please, add a new issue to the bug
-tracker at <http://code.google.com/p/blazeblogger/issues/>, or visit the
-discussion group at <http://groups.google.com/group/blazeblogger/>.
+tracker at <http://code.google.com/p/hazeblogger/issues/>, or visit the
+discussion group at <http://groups.google.com/group/hazeblogger/>.
 
 =head1 COPYRIGHT
 

@@ -1,4 +1,4 @@
-# makefile for BlazeBlogger, a CMS without boundaries
+# makefile for hazeblogger, a CMS without boundaries
 # Copyright (C) 2009-2011 Jaromir Hradilek
 
 # This program is  free software:  you can redistribute it and/or modify it
@@ -14,19 +14,19 @@
 # with this program. If not, see <http://www.gnu.org/licenses/>.
 
 # General information:
-NAME    = blazeblogger
+NAME    = hazeblogger
 VERSION = 1.2.0
 
 # General settings:
 SHELL   = /bin/sh
 INSTALL = /usr/bin/install -c
 POD2MAN = /usr/bin/pod2man
-MAN1    = src/blaze-add.1 src/blaze-config.1 src/blaze-edit.1 \
-          src/blaze-init.1 src/blaze-list.1 src/blaze-log.1 \
-          src/blaze-make.1 src/blaze-remove.1
-SRCS    = src/blaze-add.pl src/blaze-config.pl src/blaze-edit.pl \
-          src/blaze-init.pl src/blaze-list.pl src/blaze-log.pl \
-          src/blaze-make.pl src/blaze-remove.pl
+MAN1    = src/haze-add.1 src/haze-config.1 src/haze-edit.1 \
+          src/haze-init.1 src/haze-list.1 src/haze-log.1 \
+          src/haze-make.1 src/haze-remove.1
+SRCS    = src/haze-add.pl src/haze-config.pl src/haze-edit.pl \
+          src/haze-init.pl src/haze-list.pl src/haze-log.pl \
+          src/haze-make.pl src/haze-remove.pl
 
 # Installation directories:
 config  = /etc
@@ -47,20 +47,20 @@ all: $(MAN1)
 install_bin:
 	@echo "Copying executables..."
 	$(INSTALL) -d $(bindir)
-	$(INSTALL) -m 755 src/blaze-add.pl $(bindir)/blaze-add
-	$(INSTALL) -m 755 src/blaze-log.pl $(bindir)/blaze-log
-	$(INSTALL) -m 755 src/blaze-edit.pl $(bindir)/blaze-edit
-	$(INSTALL) -m 755 src/blaze-init.pl $(bindir)/blaze-init
-	$(INSTALL) -m 755 src/blaze-list.pl $(bindir)/blaze-list
-	$(INSTALL) -m 755 src/blaze-make.pl $(bindir)/blaze-make
-	$(INSTALL) -m 755 src/blaze-config.pl $(bindir)/blaze-config
-	$(INSTALL) -m 755 src/blaze-remove.pl $(bindir)/blaze-remove
-	$(INSTALL) -m 755 unix/blaze.sh $(bindir)/blaze
+	$(INSTALL) -m 755 src/haze-add.pl $(bindir)/haze-add
+	$(INSTALL) -m 755 src/haze-log.pl $(bindir)/haze-log
+	$(INSTALL) -m 755 src/haze-edit.pl $(bindir)/haze-edit
+	$(INSTALL) -m 755 src/haze-init.pl $(bindir)/haze-init
+	$(INSTALL) -m 755 src/haze-list.pl $(bindir)/haze-list
+	$(INSTALL) -m 755 src/haze-make.pl $(bindir)/haze-make
+	$(INSTALL) -m 755 src/haze-config.pl $(bindir)/haze-config
+	$(INSTALL) -m 755 src/haze-remove.pl $(bindir)/haze-remove
+	$(INSTALL) -m 755 unix/haze.sh $(bindir)/haze
 
 install_conf:
 	@echo "Copying bash completion..."
 	$(INSTALL) -d $(compdir)
-	$(INSTALL) -m 644 unix/bash_completion $(compdir)/blazeblogger
+	$(INSTALL) -m 644 unix/bash_completion $(compdir)/hazeblogger
 
 install_data:
 	@echo "Copying translations..."
@@ -91,32 +91,32 @@ install_docs:
 install_man: $(MAN1)
 	@echo "Copying manual pages..."
 	$(INSTALL) -d $(man1dir)
-	$(INSTALL) -m 644 src/blaze-add.1 $(man1dir)
-	$(INSTALL) -m 644 src/blaze-log.1 $(man1dir)
-	$(INSTALL) -m 644 src/blaze-edit.1 $(man1dir)
-	$(INSTALL) -m 644 src/blaze-init.1 $(man1dir)
-	$(INSTALL) -m 644 src/blaze-list.1 $(man1dir)
-	$(INSTALL) -m 644 src/blaze-make.1 $(man1dir)
-	$(INSTALL) -m 644 src/blaze-config.1 $(man1dir)
-	$(INSTALL) -m 644 src/blaze-remove.1 $(man1dir)
-	$(INSTALL) -m 644 unix/man/man1/blaze.1 $(man1dir)
+	$(INSTALL) -m 644 src/haze-add.1 $(man1dir)
+	$(INSTALL) -m 644 src/haze-log.1 $(man1dir)
+	$(INSTALL) -m 644 src/haze-edit.1 $(man1dir)
+	$(INSTALL) -m 644 src/haze-init.1 $(man1dir)
+	$(INSTALL) -m 644 src/haze-list.1 $(man1dir)
+	$(INSTALL) -m 644 src/haze-make.1 $(man1dir)
+	$(INSTALL) -m 644 src/haze-config.1 $(man1dir)
+	$(INSTALL) -m 644 src/haze-remove.1 $(man1dir)
+	$(INSTALL) -m 644 unix/man/man1/haze.1 $(man1dir)
 
 install: install_bin install_conf install_data install_docs install_man
 
 uninstall:
 	@echo "Removing executables..."
-	-rm -f $(bindir)/blaze-add
-	-rm -f $(bindir)/blaze-log
-	-rm -f $(bindir)/blaze-edit
-	-rm -f $(bindir)/blaze-init
-	-rm -f $(bindir)/blaze-list
-	-rm -f $(bindir)/blaze-make
-	-rm -f $(bindir)/blaze-config
-	-rm -f $(bindir)/blaze-remove
-	-rm -f $(bindir)/blaze
+	-rm -f $(bindir)/haze-add
+	-rm -f $(bindir)/haze-log
+	-rm -f $(bindir)/haze-edit
+	-rm -f $(bindir)/haze-init
+	-rm -f $(bindir)/haze-list
+	-rm -f $(bindir)/haze-make
+	-rm -f $(bindir)/haze-config
+	-rm -f $(bindir)/haze-remove
+	-rm -f $(bindir)/haze
 	-rmdir $(bindir)
 	@echo "Removing bash completion..."
-	-rm -f $(compdir)/blazeblogger
+	-rm -f $(compdir)/hazeblogger
 	-rmdir $(compdir)
 	@echo "Removing translations..."
 	-rm -f $(datadir)/lang/cs_CZ
@@ -141,15 +141,15 @@ uninstall:
 	-rm -f $(docsdir)/ChangeLog
 	-rmdir $(docsdir)
 	@echo "Removing manual pages..."
-	-rm -f $(man1dir)/blaze-add.1
-	-rm -f $(man1dir)/blaze-log.1
-	-rm -f $(man1dir)/blaze-edit.1
-	-rm -f $(man1dir)/blaze-init.1
-	-rm -f $(man1dir)/blaze-list.1
-	-rm -f $(man1dir)/blaze-make.1
-	-rm -f $(man1dir)/blaze-config.1
-	-rm -f $(man1dir)/blaze-remove.1
-	-rm -f $(man1dir)/blaze.1
+	-rm -f $(man1dir)/haze-add.1
+	-rm -f $(man1dir)/haze-log.1
+	-rm -f $(man1dir)/haze-edit.1
+	-rm -f $(man1dir)/haze-init.1
+	-rm -f $(man1dir)/haze-list.1
+	-rm -f $(man1dir)/haze-make.1
+	-rm -f $(man1dir)/haze-config.1
+	-rm -f $(man1dir)/haze-remove.1
+	-rm -f $(man1dir)/haze.1
 	-rmdir $(man1dir)
 
 clean:
@@ -157,5 +157,5 @@ clean:
 
 %.1: %.pl
 	$(POD2MAN) --section=1 --release="Version $(VERSION)" \
-	                       --center="BlazeBlogger Documentation" $^ $@
+	                       --center="hazeblogger Documentation" $^ $@
 

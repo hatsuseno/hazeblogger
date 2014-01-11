@@ -1,4 +1,4 @@
-.\" manual page for blaze, a command wrapper for BlazeBlogger
+.\" manual page for haze, a command wrapper for hazeblogger
 .\" Copyright (C) 2010-2011 Jaromir Hradilek
 .\"
 .\" Permission is granted to copy, distribute and/or modify this document
@@ -7,24 +7,24 @@
 .\" Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
 .\"
 .\" A copy  of the license is included  as a file called FDL  in the main
-.\" directory of the BlazeBlogger source package.
-.TH BLAZE 1 "2011-02-18" "Version 1.2.0" "BlazeBlogger Documentation"
+.\" directory of the hazeblogger source package.
+.TH haze 1 "2011-02-18" "Version 1.2.0" "hazeblogger Documentation"
 .SH NAME
-blaze \- allows you to run BlazeBlogger utilities with a single command
+haze \- allows you to run hazeblogger utilities with a single command
 .SH SYNOPSIS
-.B  blaze
+.B  haze
 .I  command
 .RI [ option ...]
 .PP
-.B  blaze
+.B  haze
 .BR help | man
 .RI [ command ]
 .PP
-.B blaze
+.B haze
 .BR \-h | \-v
 .SH DESCRIPTION
-.B blaze
-provides a common way to run BlazeBlogger utilities with a single command.
+.B haze
+provides a common way to run hazeblogger utilities with a single command.
 .SH OPTIONS
 .SS Command Line Options
 .TP
@@ -37,45 +37,45 @@ Displays version information and exits.
 .TP
 .BR init ", " in
 Runs
-.BR blaze-init ,
-a utility that either creates a BlazeBlogger repository, or recovers a
+.BR haze-init ,
+a utility that either creates a hazeblogger repository, or recovers a
 previously corrupted one.
 .TP
 .BR config ", " cf ", " cfg
 Runs
-.BR blaze-config ,
-a utility that either displays, or sets BlazeBlogger configuration options.
+.BR haze-config ,
+a utility that either displays, or sets hazeblogger configuration options.
 .TP
 .B  add
 Runs
-.BR blaze-add ,
-a utility that adds a blog post or a page to the BlazeBlogger repository.
+.BR haze-add ,
+a utility that adds a blog post or a page to the hazeblogger repository.
 .TP
 .BR edit ", " ed
 Runs
-.BR blaze-edit ,
-a utility that edits a blog post or a page in the BlazeBlogger repository.
+.BR haze-edit ,
+a utility that edits a blog post or a page in the hazeblogger repository.
 .TP
 .BR remove ", " rm ", " del
 Runs
-.BR blaze-remove ,
-a utility that removes a blog post or a page from the BlazeBlogger
+.BR haze-remove ,
+a utility that removes a blog post or a page from the hazeblogger
 repository.
 .TP
 .BR list ", " ls
 Runs
-.BR blaze-list ,
-a utility that lists blog posts or pages in the BlazeBlogger repository.
+.BR haze-list ,
+a utility that lists blog posts or pages in the hazeblogger repository.
 .TP
 .BR make ", " mk
 Runs
-.BR blaze-make ,
-a utility that generates a blog from the BlazeBlogger repository.
+.BR haze-make ,
+a utility that generates a blog from the hazeblogger repository.
 .TP
 .B  log
 Runs
-.BR blaze-log ,
-a utility that displays the BlazeBlogger repository log.
+.BR haze-log ,
+a utility that displays the hazeblogger repository log.
 .TP
 .B  help
 Displays usage information, either for the utility itself, or for the
@@ -94,21 +94,21 @@ Displays version information.
 Unless the
 .B  core.editor
 option is set,
-.B  blaze
+.B  haze
 tries to use system-wide settings to decide which editor to use.
 .SH SEE ALSO
-.BR blaze-init (1),
-.BR blaze-config (1),
-.BR blaze-add (1),
-.BR blaze-edit (1),
-.BR blaze-remove (1),
-.BR blaze-list (1),
-.BR blaze-make (1),
-.BR blaze-log (1)
+.BR haze-init (1),
+.BR haze-config (1),
+.BR haze-add (1),
+.BR haze-edit (1),
+.BR haze-remove (1),
+.BR haze-list (1),
+.BR haze-make (1),
+.BR haze-log (1)
 .SH BUGS
 To report a bug or to send a patch, please, add a new issue to the bug
-tracker at <http://code.google.com/p/blazeblogger/issues/>, or visit the
-discussion group at <http://groups.google.com/group/blazeblogger/>.
+tracker at <http://code.google.com/p/hazeblogger/issues/>, or visit the
+discussion group at <http://groups.google.com/group/hazeblogger/>.
 .SH COPYRIGHT
 Copyright (C) 2009-2011 Jaromir Hradilek
 .PP

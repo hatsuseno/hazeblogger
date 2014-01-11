@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
 
-# blaze-config - displays or sets BlazeBlogger configuration options
+# haze-config - displays or sets hazeblogger configuration options
 # Copyright (C) 2008-2011 Jaromir Hradilek
 
 # This program is  free software:  you can redistribute it and/or modify it
@@ -111,7 +111,7 @@ Usage: $NAME [-qV] [-b DIRECTORY] [-E EDITOR] OPTION [VALUE...]
        $NAME -e [-b DIRECTORY]
        $NAME -h|-v
 
-  -b, --blogdir DIRECTORY     specify a directory in which the BlazeBlogger
+  -b, --blogdir DIRECTORY     specify a directory in which the hazeblogger
                               repository is placed
   -E, --editor EDITOR         specify an external text editor
   -e, --edit                  edit the configuration in a text editor
@@ -205,7 +205,7 @@ sub write_ini {
 # Read the content of the configuration file:
 sub read_conf {
   # Prepare the file name:
-  my $file = catfile($blogdir, '.blaze', 'config');
+  my $file = catfile($blogdir, '.haze', 'config');
 
   # Parse the file:
   if (my $conf = read_ini($file)) {
@@ -226,7 +226,7 @@ sub write_conf {
   my $conf = shift || die 'Missing argument';
 
   # Prepare the file name:
-  my $file = catfile($blogdir, '.blaze', 'config');
+  my $file = catfile($blogdir, '.haze', 'config');
 
   # Save the configuration file:
   unless (write_ini($file, $conf)) {
@@ -244,7 +244,7 @@ sub write_conf {
 # Create a human readable version of the configuration file:
 sub create_temp {
   my $conf = shift || die 'Missing argument';
-  my $file = shift || catfile($blogdir, '.blaze', 'temp');
+  my $file = shift || catfile($blogdir, '.haze', 'temp');
 
   # Prepare the general blog settings:
   my $blog_title     = $conf->{blog}->{title}     || $opt{'blog.title'};
@@ -260,7 +260,7 @@ sub create_temp {
   my $color_list     = $conf->{color}->{list}     || $opt{'color.list'};
   my $color_log      = $conf->{color}->{log}      || $opt{'color.log'};
 
-  # Prepare the advanced BlazeBlogger settings:
+  # Prepare the advanced hazeblogger settings:
   my $core_doctype   = $conf->{core}->{doctype}   || $opt{'core.doctype'};
   my $core_editor    = $conf->{core}->{editor}    || $opt{'core.editor'};
   my $core_encoding  = $conf->{core}->{encoding}  || $opt{'core.encoding'};
@@ -300,11 +300,11 @@ sub create_temp {
 ##   description   A brief description of your blog.
 ##   keywords      A comma-separated list of keywords.
 ##   theme         A theme for your blog. It must point to an existing file
-##                 in the .blaze/theme/ directory.
+##                 in the .haze/theme/ directory.
 ##   style         A style sheet for your blog.  It must point to  an exis-
-##                 ting file in the .blaze/style/ directory.
+##                 ting file in the .haze/style/ directory.
 ##   lang          A translation of your blog. It must point to an existing
-##                 file in the .blaze/lang/ directory.
+##                 file in the .haze/lang/ directory.
 ##   posts         A number of blog posts to be listed on a single page.
 ##
 [blog]
@@ -320,15 +320,15 @@ posts=$blog_posts
 ## Color settings. Available options are:
 ##
 ##   list          A boolean  to enable (true) or disable (false) colors in
-##                 the blaze-list output.
+##                 the haze-list output.
 ##   log           A boolean  to enable (true) or disable (false) colors in
-##                 the blaze-log output.
+##                 the haze-log output.
 ##
 [color]
 list=$color_list
 log=$color_log
 
-## Advanced BlazeBlogger settings. Available options are:
+## Advanced hazeblogger settings. Available options are:
 ##
 ##   doctype       A document type.  It can be  either  html  for HTML,  or
 ##                 xhtml for the XHTML standard.
@@ -414,7 +414,7 @@ sub edit_options {
   my ($before, $after);
 
   # Prepare the temporary file name:
-  my $temp = catfile($blogdir, '.blaze', 'temp');
+  my $temp = catfile($blogdir, '.haze', 'temp');
 
   # Read the configuration file:
   my $conf = read_conf();
@@ -582,8 +582,8 @@ GetOptions(
 
 # Check whether the repository is present, no matter how naive this method
 # actually is:
-exit_with_error("Not a BlazeBlogger repository! Try `blaze-init' first.",1)
-  unless (-d catdir($blogdir, '.blaze'));
+exit_with_error("Not a hazeblogger repository! Try `haze-init' first.",1)
+  unless (-d catdir($blogdir, '.haze'));
 
 # Decide which action to perform:
 if ($edit) {
@@ -627,20 +627,20 @@ __END__
 
 =head1 NAME
 
-blaze-config - displays or sets BlazeBlogger configuration options
+haze-config - displays or sets hazeblogger configuration options
 
 =head1 SYNOPSIS
 
-B<blaze-config> [B<-qV>] [B<-b> I<directory>] [B<-E> I<editor>] I<option>
+B<haze-config> [B<-qV>] [B<-b> I<directory>] [B<-E> I<editor>] I<option>
 [I<value>...]
 
-B<blaze-config> B<-e> [B<-b> I<directory>]
+B<haze-config> B<-e> [B<-b> I<directory>]
 
-B<blaze-config> B<-h>|B<-v>
+B<haze-config> B<-h>|B<-v>
 
 =head1 DESCRIPTION
 
-B<blaze-config> either sets BlazeBlogger configuration options, or displays
+B<haze-config> either sets hazeblogger configuration options, or displays
 their current value. Additionally, it can also open a configuration file in
 an external text editor.
 
@@ -652,7 +652,7 @@ an external text editor.
 
 =item B<-b> I<directory>, B<--blogdir> I<directory>
 
-Allows you to specify a I<directory> in which the BlazeBlogger repository
+Allows you to specify a I<directory> in which the hazeblogger repository
 is placed. The default option is a current working directory.
 
 =item B<-E> I<editor>, B<--editor> I<editor>
@@ -705,17 +705,17 @@ A comma-separated list of keywords.
 =item B<blog.theme>=I<string>
 
 A theme for your blog. Note that it must point to an existing file in the
-C<.blaze/theme/> directory. The default option is C<default.html>.
+C<.haze/theme/> directory. The default option is C<default.html>.
 
 =item B<blog.style>=I<string>
 
 A style sheet for your blog. Note that it must point to an existing file in
-the C<.blaze/style/> directory. The default option is C<default.css>.
+the C<.haze/style/> directory. The default option is C<default.css>.
 
 =item B<blog.lang>=I<string>
 
 A translation of your blog. Note that it must point to an existing file in
-the C<.blaze/lang/> directory. The default option is C<en_US>.
+the C<.haze/lang/> directory. The default option is C<en_US>.
 
 =item B<blog.posts>=I<integer>
 
@@ -725,12 +725,12 @@ C<10>.
 =item B<color.list>=I<boolean>
 
 A boolean to enable (C<true>) or disable (C<false>) colors in the
-B<blaze-list> output. The default option is C<false>.
+B<haze-list> output. The default option is C<false>.
 
 =item B<color.log>=I<boolean>
 
 A boolean to enable (C<true>) or disable (C<false>) colors in the
-B<blaze-log> output. The default option is C<false>.
+B<haze-log> output. The default option is C<false>.
 
 =item B<core.doctype>=I<string>
 
@@ -813,7 +813,7 @@ Your email address. The default option is C<admin@localhost>.
 
 =item B<EDITOR>
 
-Unless the B<core.editor> option is set, BlazeBlogger tries to use system-wide
+Unless the B<core.editor> option is set, hazeblogger tries to use system-wide
 settings to decide which editor to use.
 
 =back
@@ -822,19 +822,19 @@ settings to decide which editor to use.
 
 =over
 
-=item I<.blaze/config>
+=item I<.haze/config>
 
 A file containing the configuration.
 
-=item I<.blaze/theme/>
+=item I<.haze/theme/>
 
 A directory containing blog themes.
 
-=item I<.blaze/style/>
+=item I<.haze/style/>
 
 A directory containing style sheets.
 
-=item I<.blaze/lang/>
+=item I<.haze/lang/>
 
 A directory containing language files.
 
@@ -844,49 +844,49 @@ A directory containing language files.
 
 Configure the default text editor:
 
-  ~]$ blaze-config core.editor nano
+  ~]$ haze-config core.editor nano
   The option has been successfully saved.
 
 Configure the user information:
 
-  ~]$ blaze-config user.name Jaromir Hradilek
+  ~]$ haze-config user.name Jaromir Hradilek
   The option has been successfully saved.
-  ~]$ blaze-config user.email jhradilek@gmail.com
+  ~]$ haze-config user.email jhradilek@gmail.com
   The option has been successfully saved.
 
 Configure the blog appearance:
 
-  ~]$ blaze-config blog.title BlazeBlogger
+  ~]$ haze-config blog.title hazeblogger
   The option has been successfully saved.
-  ~]$ blaze-config blog.subtitle a CMS without boundaries
+  ~]$ haze-config blog.subtitle a CMS without boundaries
   The option has been successfully saved.
-  ~]$ blaze-config blog.theme keepitsimple.html
+  ~]$ haze-config blog.theme keepitsimple.html
   The option has been successfully saved.
-  ~]$ blaze-config blog.style keepitsimple.css
+  ~]$ haze-config blog.style keepitsimple.css
   The option has been successfully saved.
 
 Configure the RSS feed:
 
-  ~]$ blaze-config feed.fullposts true
+  ~]$ haze-config feed.fullposts true
   The option has been successfully saved.
-  ~]$ blaze-config feed.posts 10
+  ~]$ haze-config feed.posts 10
   The option has been successfully saved.
-  ~]$ blaze-config feed.baseurl http://blaze.blackened.cz/
+  ~]$ haze-config feed.baseurl http://haze.blackened.cz/
   The option has been successfully saved.
 
 Open the configuration in a text editor:
 
-  ~]$ blaze-config -e
+  ~]$ haze-config -e
 
 =head1 SEE ALSO
 
-B<blaze-init>(1)
+B<haze-init>(1)
 
 =head1 BUGS
 
 To report a bug or to send a patch, please, add a new issue to the bug
-tracker at <http://code.google.com/p/blazeblogger/issues/>, or visit the
-discussion group at <http://groups.google.com/group/blazeblogger/>.
+tracker at <http://code.google.com/p/hazeblogger/issues/>, or visit the
+discussion group at <http://groups.google.com/group/hazeblogger/>.
 
 =head1 COPYRIGHT
 

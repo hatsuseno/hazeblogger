@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
 
-# blaze-edit - edits a blog post or a page in the BlazeBlogger repository
+# haze-add - adds a blog post or a page to the hazeblogger repository
 # Copyright (C) 2008-2011 Jaromir Hradilek
 
 # This program is  free software:  you can redistribute it and/or modify it
@@ -29,17 +29,20 @@ use constant NAME    => basename($0, '.pl');        # Script name.
 use constant VERSION => '1.2.0';                    # Script version.
 
 # General script settings:
-our $blogdir = '.';                                 # Repository location.
-our $editor  = '';                                  # Editor to use.
-our $force   = 0;                                   # Force raw file?
-our $process = 1;                                   # Use processor?
-our $verbose = 1;                                   # Verbosity level.
+our $blogdir  = '.';                                # Repository location.
+our $editor   = '';                                 # Editor to use.
+our $process  = 1;                                  # Use processor?
+our $verbose  = 1;                                  # Verbosity level.
 
 # Global variables:
-our $conf    = {};                                  # Configuration.
+our $chosen   = 1;                                  # Available ID guess.
+our $reserved = undef;                              # Reserved ID list.
+our $conf     = {};                                 # Configuration.
 
-# Command-line options:
-my  $type    = 'post';                              # Type: post or page.
+# Command line options:
+my  $type     = 'post';                             # Type: post or page.
+my  $added    = '';                                 # List of added IDs.
+my  $data     = {};                                 # Post/page meta data.
 
 # Set up the __WARN__ signal handler:
 $SIG{__WARN__} = sub {
@@ -75,16 +78,21 @@ sub display_help {
 
   # Display the usage:
   print << "END_HELP";
-Usage: $NAME [-fpqCPV] [-b DIRECTORY] [-E EDITOR] ID
+Usage: $NAME [-pqCPV] [-b DIRECTORY] [-E EDITOR] [-a AUTHOR] [-d DATE]
+                 [-t TITLE] [-k KEYWORDS] [-T TAGS] [-u URL] [FILE...]
        $NAME -h|-v
 
-  -b, --blogdir DIRECTORY     specify a directory in which the BlazeBlogger
+  -b, --blogdir DIRECTORY     specify a directory in which the hazeblogger
                               repository is placed
   -E, --editor EDITOR         specify an external text editor
-  -p, --page                  edit a page
-  -P, --post                  edit a blog post
-  -f, --force                 create an empty source file in case it does
-                              not already exist
+  -t, --title TITLE           specify a title
+  -a, --author AUTHOR         specify an author
+  -d, --date DATE             specify a date of publishing
+  -k, --keywords KEYWORDS     specify a comma-separated list of keywords
+  -T, --tags TAGS             specify a comma-separated list of tags
+  -u, --url URL               specify a URL
+  -p, --page                  add a page or pages
+  -P, --post                  add a blog post or blog posts
   -C, --no-processor          disable processing the blog post or page with
                               an external application
   -q, --quiet                 do not display unnecessary messages
@@ -163,7 +171,7 @@ sub write_ini {
 
   # Process each section:
   foreach my $section (sort(keys(%$hash))) {
-    # Write the section header to the file:
+    # Write the section header to the file::
     print INI "[$section]\n";
 
     # Process each option in the section:
@@ -183,7 +191,7 @@ sub write_ini {
 # Read the content of the configuration file:
 sub read_conf {
   # Prepare the file name:
-  my $file = catfile($blogdir, '.blaze', 'config');
+  my $file = catfile($blogdir, '.haze', 'config');
 
   # Parse the file:
   if (my $conf = read_ini($file)) {
@@ -268,7 +276,7 @@ sub check_header {
       # Make sure the result is not empty:
       unless ($tag_url) {
         # Report the missing tag URL:
-        display_warning("Unable to derive a URL from the tag `$tag'. " .
+        display_warning("Unable to derive the URL from the tag `$tag'. " .
                         "Please use ASCII characters only.");
       }
     }
@@ -302,115 +310,7 @@ sub check_header {
   return 1;
 }
 
-# Create a single file from a record:
-sub read_record {
-  my $file = shift || die 'Missing argument';
-  my $id   = shift || die 'Missing argument';
-  my $type = shift || 'post';
-
-  # Prepare the record file names:
-  my $head = catfile($blogdir, '.blaze', "${type}s", 'head', $id);
-  my $body = catfile($blogdir, '.blaze', "${type}s", 'body', $id);
-  my $raw  = catfile($blogdir, '.blaze', "${type}s", 'raw',  $id);
-
-  # If the processor is enabled, make sure the raw file exists:
-  if ($process && ! -e $raw) {
-    exit_with_error("The raw file does not exist. Use `--force' to create " .
-                    "a new one, or `--no-processor' to disable the " .
-                    "processor.", 1)
-      unless $force;
-  }
-
-  # Parse the record header data:
-  my $data = read_ini($head) or return 0;
-
-  # Collect the data for the file header:
-  my $author   = $data->{header}->{author}   || '';
-  my $title    = $data->{header}->{title}    || '';
-  my $date     = $data->{header}->{date}     || '';
-  my $keywords = $data->{header}->{keywords} || '';
-  my $tags     = $data->{header}->{tags}     || '';
-  my $url      = $data->{header}->{url}      || '';
-
-  # Declare other necessary variables:
-  my $head;
-
-  # Prepare the temporary file header:
-  if ($type eq 'post') {
-    # Use the variant for a blog post:
-    $head = << "END_POST_HEADER";
-# This and the following lines beginning with '#' are the blog post header.
-# Please take your time and replace these options with desired values. Just
-# remember that the date has to be in the YYYY-MM-DD form, tags are a comma
-# separated list of categories the post (pages ignore these) belong to, and
-# the url,  if provided, should consist of alphanumeric characters, hyphens
-# and underscores only.  Specifying your own url  is especially recommended
-# in case you use non-ASCII characters in your blog post title.
-#
-#   title:    $title
-#   author:   $author
-#   date:     $date
-#   keywords: $keywords
-#   tags:     $tags
-#   url:      $url
-#
-# The header ends here. The rest is the content of your blog post.
-END_POST_HEADER
-  }
-  else {
-    # Use the variant for a page:
-    $head = << "END_PAGE_HEADER";
-# This and the following lines beginning with '#' are the page header. Ple-
-# ase take your time and replace these  options with  desired  values. Just
-# remember that the date has to be in the YYYY-MM-DD form, and the  url, if
-# provided, should  consist of alphanumeric characters,  hyphens and under-
-# scores only. Specifying your own url  is especially  recommended  in case
-# you use non-ASCII characters in your page title.
-#
-#   title:    $title
-#   date:     $date
-#   keywords: $keywords
-#   url:      $url
-#
-# The header ends here. The rest is the content of your page.
-END_PAGE_HEADER
-  }
-
-  # Open the file for writing:
-  if (open(FOUT, ">$file")) {
-    # Write the header:
-    print FOUT $head;
-
-    # Skip this part when forced to create empty raw file:
-    unless ($process && ! -e $raw && $force) {
-      # Open the record for the reading:
-      open(FIN, ($process ? $raw : $body)) or return 0;
-
-      # Add the content of the record body to the file:
-      while (my $line = <FIN>) {
-        print FOUT $line;
-      }
-
-      # Close the record:
-      close(FIN);
-    }
-
-    # Close the file:
-    close(FOUT);
-
-    # Return success:
-    return 1;
-  }
-  else {
-    # Report failure:
-    display_warning("Unable to create the temporary file.");
-
-    # Return failure:
-    return 0;
-  }
-}
-
-# Create a record from the single file:
+# Create a record from a single file:
 sub save_record {
   my $file = shift || die 'Missing argument';
   my $id   = shift || die 'Missing argument';
@@ -421,9 +321,9 @@ sub save_record {
   my $line = '';
 
   # Prepare the record directory names:
-  my $head_dir  = catdir($blogdir, '.blaze', "${type}s", 'head');
-  my $body_dir  = catdir($blogdir, '.blaze', "${type}s", 'body');
-  my $raw_dir   = catdir($blogdir, '.blaze', "${type}s", 'raw');
+  my $head_dir  = catdir($blogdir, '.haze', "${type}s", 'head');
+  my $body_dir  = catdir($blogdir, '.haze', "${type}s", 'body');
+  my $raw_dir   = catdir($blogdir, '.haze', "${type}s", 'raw');
 
   # Prepare the record file names:
   my $head      = catfile($head_dir, $id);
@@ -431,9 +331,9 @@ sub save_record {
   my $raw       = catfile($raw_dir,  $id);
 
   # Prepare the temporary file names:
-  my $temp_head = catfile($blogdir, '.blaze', 'temp.head');
-  my $temp_body = catfile($blogdir, '.blaze', 'temp.body');
-  my $temp_raw  = catfile($blogdir, '.blaze', 'temp.raw');
+  my $temp_head = catfile($blogdir, '.haze', 'temp.head');
+  my $temp_body = catfile($blogdir, '.haze', 'temp.body');
+  my $temp_raw  = catfile($blogdir, '.haze', 'temp.raw');
 
   # Read required data from the configuration:
   my $processor = $conf->{core}->{processor};
@@ -459,7 +359,7 @@ sub save_record {
     }
   }
 
-  # Fix erroneous or missing header data:
+  # Look for erroneous or missing header data:
   check_header($data, $id, $type);
 
   # Write the record header to the temporary file:
@@ -518,48 +418,164 @@ sub save_record {
   return 1;
 }
 
-# Edit a record in the repository:
-sub edit_record {
-  my $id   = shift || die 'Missing argument';
+# Collect reserved post or page IDs:
+sub collect_ids {
   my $type = shift || 'post';
 
-  # Initialize required variables:
-  my ($before, $after);
+  # Prepare the post or page directory name:
+  my $head = catdir($blogdir, '.haze', "${type}s", 'head');
 
-  # Prepare the temporary file name:
-  my $temp = catfile($blogdir, '.blaze', 'temp');
+  # Open the header directory:
+  opendir(HEADS, $head) or return 0;
+
+  # Build a list of used IDs:
+  my @used = grep {! /^\.\.?$/ } readdir(HEADS);
+
+  # Close the directory:
+  closedir(HEADS);
+
+  # Return the sorted result:
+  return sort {$a <=> $b} @used;
+}
+
+# Return the first unused ID:
+sub choose_id {
+  my $type   = shift || 'post';
+
+  # Get the list of reserved IDs unless already done:
+  @$reserved = collect_ids($type) unless defined $reserved;
+
+  # Iterate through the used IDs:
+  while (my $used = shift(@$reserved)) {
+    # Check whether the candidate ID is really free:
+    if ($chosen == $used) {
+      # Try the next ID:
+      $chosen++;
+    }
+    else {
+      # Push the last checked ID back to the list:
+      unshift(@$reserved, $used);
+
+      # Exit the loop:
+      last;
+    }
+  }
+
+  # Return the result, and increase the next candidate number:
+  return $chosen++;
+}
+
+# Add given files to the repository:
+sub add_files {
+  my $type  = shift || 'post';
+  my $data  = shift || {};
+  my $files = shift || die 'Missing argument';
+
+  # Initialize required variables:
+  my @list  = ();
+
+  # Process each file:
+  foreach my $file (@{$files}) {
+    # Get the first available ID:
+    my $id = choose_id($type);
+
+    # Save the record:
+    save_record($file, $id, $type, $data)
+      and push(@list, $id)
+      or display_warning("Unable to add $file.");
+  }
+
+  # Return the list of added IDs:
+  return @list;
+}
+
+# Add a new record to the repository:
+sub add_new {
+  my $type = shift || 'post';
+  my $data = shift || {};
 
   # Decide which editor to use:
   my $edit = $editor || $conf->{core}->{editor} || $ENV{EDITOR} || 'vi';
 
-  # Create the temporary file:
-  unless (read_record($temp, $id, $type)) {
-    # Report failure:
-    display_warning("Unable to read the $type with ID $id.");
+  # Prepare the data for the temporary file header:
+  my $title    = $data->{header}->{title}    || '';
+  my $author   = $data->{header}->{author}   || $conf->{user}->{nickname}
+                                             || $conf->{user}->{name}
+                                             || 'admin';
+  my $date     = $data->{header}->{date}     || date_to_string(time);
+  my $keywords = $data->{header}->{keywords} || '';
+  my $tags     = $data->{header}->{tags}     || '';
+  my $url      = $data->{header}->{url}      || '';
 
-    # Return failure:
-    return 0;
+  # Declare other necessary variables:
+  my $head;
+
+  # Prepare the temporary file header:
+  if ($type eq 'post') {
+    # Use the variant for a blog post:
+    $head = << "END_POST_HEADER";
+# This and the following lines beginning with '#' are the blog post header.
+# Please take your time and replace these options with desired values. Just
+# remember that the date has to be in the YYYY-MM-DD form, tags are a comma
+# separated list of categories the post (pages ignore these) belong to, and
+# the url,  if provided, should consist of alphanumeric characters, hyphens
+# and underscores only.  Specifying your own url  is especially recommended
+# in case you use non-ASCII characters in your blog post title.
+#
+#   title:    $title
+#   author:   $author
+#   date:     $date
+#   keywords: $keywords
+#   tags:     $tags
+#   url:      $url
+#
+# The header ends here. The rest is the content of your blog post.
+
+END_POST_HEADER
+  }
+  else {
+    # Use the variant for a page:
+    $head = << "END_PAGE_HEADER";
+# This and the following lines beginning with '#' are the page header. Ple-
+# ase take your time and replace these  options with  desired  values. Just
+# remember that the date has to be in the YYYY-MM-DD form, and the  url, if
+# provided, should  consist of alphanumeric characters,  hyphens and under-
+# scores only. Specifying your own url  is especially  recommended  in case
+# you use non-ASCII characters in your page title.
+#
+#   title:    $title
+#   date:     $date
+#   keywords: $keywords
+#   url:      $url
+#
+# The header ends here. The rest is the content of your page.
+
+END_PAGE_HEADER
   }
 
-  # Open the file for reading:
-  if (open(FILE, "$temp")) {
-    # Set the input/output handler to "binmode":
-    binmode(FILE);
+  # Prepare the temporary file name:
+  my $temp = catfile($blogdir, '.haze', 'temp');
 
-    # Count the checksum:
-    $before = Digest::MD5->new->addfile(*FILE)->hexdigest;
+  # Open the file for writing:
+  if (open(FILE, ">$temp")) {
+    # Write the temporary file:
+    print FILE $head;
 
     # Close the file:
     close(FILE);
   }
-
-  # Open the temporary file in the external editor:
-  unless (system("$edit $temp") == 0) {
+  else {
     # Report failure:
-    display_warning("Unable to run `$edit'.");
+    display_warning("Unable to create the temporary file.");
 
     # Return failure:
     return 0;
+  }
+
+  # Open the temporary file in the external editor:
+  unless (system("$edit $temp") == 0) {
+    # Report failure and exit:
+    exit_with_error("Unable to run `$edit'.", 1);
   }
 
   # Open the file for reading:
@@ -567,8 +583,9 @@ sub edit_record {
     # Set the input/output handler to "binmode":
     binmode(FILE);
 
-    # Count the checksum:
-    $after = Digest::MD5->new->addfile(*FILE)->hexdigest;
+    # Count the checksums:
+    my $before = Digest::MD5->new->add($head)->hexdigest;
+    my $after  = Digest::MD5->new->addfile(*FILE)->hexdigest;
 
     # Close the file:
     close(FILE);
@@ -583,20 +600,14 @@ sub edit_record {
     }
   }
 
-  # Save the record:
-  unless (save_record($temp, $id, $type)) {
-    # Report failure:
-    display_warning("Unable to write the $type with ID $id.");
-
-    # Return failure:
-    return 0
-  }
+  # Add the file to the repository:
+  my @list = add_files($type, $data, [ $temp ]);
 
   # Remove the temporary file:
   unlink $temp;
 
-  # Return success:
-  return 1;
+  # Return the record ID:
+  return shift(@list);
 }
 
 # Add the event to the log:
@@ -604,7 +615,7 @@ sub add_to_log {
   my $text = shift || 'Something miraculous has just happened!';
 
   # Prepare the log file name:
-  my $file = catfile($blogdir, '.blaze', 'log');
+  my $file = catfile($blogdir, '.haze', 'log');
 
   # Open the log file for appending:
   open(LOG, ">>$file") or return 0;
@@ -628,21 +639,23 @@ GetOptions(
   'version|v'      => sub { display_version(); exit 0; },
   'page|pages|p'   => sub { $type    = 'page'; },
   'post|posts|P'   => sub { $type    = 'post'; },
-  'force|f'        => sub { $force   = 1;      },
   'no-processor|C' => sub { $process = 0;      },
   'quiet|q'        => sub { $verbose = 0;      },
   'verbose|V'      => sub { $verbose = 1;      },
   'blogdir|b=s'    => sub { $blogdir = $_[1];  },
   'editor|E=s'     => sub { $editor  = $_[1];  },
+  'title|t=s'      => sub { $data->{header}->{title}    = $_[1]; },
+  'author|a=s'     => sub { $data->{header}->{author}   = $_[1]; },
+  'date|d=s'       => sub { $data->{header}->{date}     = $_[1]; },
+  'keywords|k=s'   => sub { $data->{header}->{keywords} = $_[1]; },
+  'tags|tag|T=s'   => sub { $data->{header}->{tags}     = $_[1]; },
+  'url|u=s'        => sub { $data->{header}->{url}      = $_[1]; },
 );
-
-# Check superfluous options:
-exit_with_error("Wrong number of options.", 22) if (scalar(@ARGV) != 1);
 
 # Check whether the repository is present, no matter how naive this method
 # actually is:
-exit_with_error("Not a BlazeBlogger repository! Try `blaze-init' first.",1)
-  unless (-d catdir($blogdir, '.blaze'));
+exit_with_error("Not a hazeblogger repository! Try `haze-init' first.",1)
+  unless (-d catdir($blogdir, '.haze'));
 
 # Read the configuration file:
 $conf = read_conf();
@@ -658,16 +671,28 @@ else {
   $process = 0;
 }
 
-# Edit the record:
-edit_record($ARGV[0], $type)
-  or exit_with_error("Cannot edit the $type in the repository.", 13);
+# Check whether a file is supplied:
+if (scalar(@ARGV) == 0) {
+  # Add a new record to the repository:
+  $added   = add_new($type, $data)
+    or exit_with_error("Cannot add the $type to the repository.", 13);
+}
+else {
+  # Add given files to the repository:
+  my @list = add_files($type, $data, \@ARGV)
+    or exit_with_error("Cannot add the ${type}s to the repository.", 13);
+
+  # Prepare the list of successfully added IDs:
+  $added   =  join(', ', sort(@list));
+  $added   =~ s/, ([^,]+)$/ and $1/;
+}
 
 # Log the event:
-add_to_log("Edited the $type with ID $ARGV[0].")
+add_to_log("Added the $type with ID $added.")
   or display_warning("Unable to log the event.");
 
 # Report success:
-print "Your changes have been successfully saved.\n" if $verbose;
+print "Successfully added the $type with ID $added.\n" if $verbose;
 
 # Return success:
 exit 0;
@@ -676,20 +701,23 @@ __END__
 
 =head1 NAME
 
-blaze-edit - edits a blog post or a page in the BlazeBlogger repository
+haze-add - adds a blog post or a page to the hazeblogger repository
 
 =head1 SYNOPSIS
 
-B<blaze-edit> [B<-fpqCPV>] [B<-b> I<directory>] [B<-E> I<editor>] I<id>
+B<haze-add> [B<-pqCPV>] [B<-b> I<directory>] [B<-E> I<editor>]
+[B<-a> I<author>] [B<-d> I<date>] [B<-t> I<title>] [B<-k> I<keywords>]
+[B<-T> I<tags>] [B<-u> I<url>] [I<file>...]
 
-B<blaze-edit> B<-h>|B<-v>
+B<haze-add> B<-h>|B<-v>
 
 =head1 DESCRIPTION
 
-B<blaze-edit> opens an existing blog post or a page with the specified
-I<id> in an external text editor. Note that there are several special forms
-and placeholders that can be used in the text, and that will be replaced
-with a proper data when the blog is generated.
+B<haze-add> adds a blog post or a page to the hazeblogger repository. If
+a I<file> is supplied, it adds the content of that file, otherwise an
+external text editor is opened for you. Note that there are several special
+forms and placeholders that can be used in the text, and that will be
+replaced with a proper data when the blog is generated.
 
 =head2 Special Forms
 
@@ -717,7 +745,7 @@ A relative path to the index page of the blog.
 
 A relative path to a page with the supplied I<id>.
 
-=item B<%post[>I<id>I<]%>
+=item B<%post[>I<id>B<]%>
 
 A relative path to a blog post with the supplied I<id>.
 
@@ -733,7 +761,7 @@ A relative path to a tag with the supplied I<name>.
 
 =item B<-b> I<directory>, B<--blogdir> I<directory>
 
-Allows you to specify a I<directory> in which the BlazeBlogger repository
+Allows you to specify a I<directory> in which the hazeblogger repository
 is placed. The default option is a current working directory.
 
 =item B<-E> I<editor>, B<--editor> I<editor>
@@ -741,24 +769,48 @@ is placed. The default option is a current working directory.
 Allows you to specify an external text I<editor>. When supplied, this
 option overrides the relevant configuration option.
 
-=item B<-p>, B<--page>
+=item B<-t> I<title>, B<--title> I<title>
 
-Tells B<blaze-edit> to edit a page or pages.
+Allows you to specify the I<title> of a blog post or page.
 
-=item B<-P>, B<--post>
+=item B<-a> I<author>, B<--author> I<author>
 
-Tells B<blaze-edit> to edit a blog post or blog posts. This is the default
+Allows you to specify the I<author> of a blog post or page.
+
+=item B<-d> I<date>, B<--date> I<date>
+
+Allows you to specify the I<date> of publishing of a blog post or page.
+
+=item B<-k> I<keywords>, B<--keywords> I<keywords>
+
+Allows you to specify a comma-separated list of I<keywords> attached to
+a blog post or page.
+
+=item B<-T> I<tags>, B<--tags> I<tags>
+
+Allows you to supply a comma-separated list of I<tags> attached to a blog
+post.
+
+=item B<-u> I<url>, B<--url> I<url>
+
+Allows you to specify the I<url> of a blog post or page. Allowed characters
+are letters, numbers, hyphens, and underscores.
+
+=item B<-p>, B<--page>, B<--pages>
+
+Tells B<haze-add> to add a page or pages.
+
+=item B<-P>, B<--post>, B<--posts>
+
+Tells B<haze-add> to add a blog post or blog posts. This is the default
 option.
-
-=item B<-f>, B<--force>
-
-Tells B<blaze-edit> to create an empty source file in case it does not
-already exist. If the B<core.processor> option is enabled, this file is
-used as the input to be processed by the selected application.
 
 =item B<-C>, B<--no-processor>
 
-Disables processing a blog post or page with an external application.
+Disables processing a blog post or page with an external application. For
+example, if you use Markdown to convert the lightweight markup language to
+the valid HTML output, this will enable you to write this particular post
+in plain HTML directly.
 
 =item B<-q>, B<--quiet>
 
@@ -784,34 +836,40 @@ Displays version information and exits.
 
 =item B<EDITOR>
 
-Unless the B<core.editor> option is set, BlazeBlogger tries to use
+Unless the B<core.editor> option is set, hazeblogger tries to use
 system-wide settings to decide which editor to use.
 
 =back
 
 =head1 EXAMPLE USAGE
 
-Edit a blog post in an external text editor:
+Write a new blog post in an external text editor:
 
-  ~]$ blaze-edit 10
+  ~]$ haze-add
 
-Edit a page in an external text editor:
+Add a new blog post from a file:
 
-  ~]$ blaze-edit -p 4
+  ~]$ haze-add new_packages.txt
+  Successfully added the post with ID 10.
 
-Edit a page in B<nano>:
+Write a new page in an external text editor:
 
-  ~]$ blaze-edit -p 2 -E nano
+  ~]$ haze-add -p
+
+Write a new page in B<nano>:
+
+  ~]$ haze-add -p -E nano
 
 =head1 SEE ALSO
 
-B<blaze-config>(1), B<blaze-add>(1), B<blaze-list>(1)
+B<haze-init>(1), B<haze-config>(1), B<haze-edit>(1), B<haze-remove>(1),
+B<haze-make>(1)
 
 =head1 BUGS
 
 To report a bug or to send a patch, please, add a new issue to the bug
-tracker at <http://code.google.com/p/blazeblogger/issues/>, or visit the
-discussion group at <http://groups.google.com/group/blazeblogger/>.
+tracker at <http://code.google.com/p/hazeblogger/issues/>, or visit the
+discussion group at <http://groups.google.com/group/hazeblogger/>.
 
 =head1 COPYRIGHT
 

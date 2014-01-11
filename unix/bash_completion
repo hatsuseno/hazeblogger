@@ -1,4 +1,4 @@
-# blazeblogger, a bash completion script for BlazeBlogger
+# hazeblogger, a bash completion script for hazeblogger
 # Copyright (C) 2009 Miroslav Hradílek
 # Revision  (C) 2010-2011 Jaromir Hradilek
 
@@ -14,65 +14,65 @@
 # You should have received a copy of the  GNU General Public License  along
 # with this program. If not, see <http://www.gnu.org/licenses/>.
 
-# blaze-init function
-_blaze_init()
+# haze-init function
+_haze_init()
 {
-  # call _blaze with init as a parameter
-  _blaze "init"
+  # call _haze with init as a parameter
+  _haze "init"
 }
 
-# blaze-config function
-_blaze_config()
+# haze-config function
+_haze_config()
 {
-  # call _blaze with config as a parameter
-  _blaze "config"
+  # call _haze with config as a parameter
+  _haze "config"
 }
 
-# blaze-add function
-_blaze_add()
+# haze-add function
+_haze_add()
 {
-  # call _blaze with add as a parameter
-  _blaze "add"
+  # call _haze with add as a parameter
+  _haze "add"
 }
 
-# blaze-edit function
-_blaze_edit()
+# haze-edit function
+_haze_edit()
 {
-  # call _blaze with edit as a parameter
-  _blaze "edit"
+  # call _haze with edit as a parameter
+  _haze "edit"
 }
 
-# blaze-remove function
-_blaze_remove()
+# haze-remove function
+_haze_remove()
 {
-  # call _blaze with remove as a parameter
-  _blaze "remove"
+  # call _haze with remove as a parameter
+  _haze "remove"
 }
 
-# blaze-list function
-_blaze_list()
+# haze-list function
+_haze_list()
 {
-  # call _blaze with list as a parameter
-  _blaze "list"
+  # call _haze with list as a parameter
+  _haze "list"
 }
 
-# blaze-make function
-_blaze_make()
+# haze-make function
+_haze_make()
 {
-  # call _blaze with make as a parameter
-  _blaze "make"
+  # call _haze with make as a parameter
+  _haze "make"
 }
 
-# blaze-log function
-_blaze_log()
+# haze-log function
+_haze_log()
 {
-  # call _blaze with log as a parameter
-  _blaze "log"
+  # call _haze with log as a parameter
+  _haze "log"
 }
 
 # main function accepts one optional argument utility
-# _blaze [utility]
-_blaze()
+# _haze [utility]
+_haze()
 {
   local cur prev opts params first
 
@@ -89,7 +89,7 @@ _blaze()
     first="${COMP_WORDS[1]}"
   fi
 
-  # basic options - blaze utilities - wrapper's first option
+  # basic options - haze utilities - wrapper's first option
   opts="init config add edit remove list make log help version"
 
   # handle utility dependent opts
@@ -346,28 +346,28 @@ user.nickname user.email"
       ;;
   esac
 
-  # handle basic opts ie. blaze utilities
+  # handle basic opts ie. haze utilities
   # reply only if function was called from wrapper
   if test "$COMP_CWORD" -eq 1 && test -z "$params"; then
     COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
     return 0
   fi
 }
-# bind _blaze function to blaze command
-complete -F _blaze blaze
-# bind _blaze init function to blaze-init command
-complete -F _blaze_init blaze-init
-# bind _blaze_config function to blaze-config command
-complete -F _blaze_config blaze-config
-# bind _blaze_add function to blaze-add command
-complete -F _blaze_add blaze-add
-# bind _blaze_edit function to blaze-edit command
-complete -F _blaze_edit blaze-edit
-# bind _blaze_remove function to blaze-remove command
-complete -F _blaze_remove blaze-remove
-# bind _blaze_list function to blaze-list command
-complete -F _blaze_list blaze-list
-# bind _blaze_make function to blaze-make command
-complete -F _blaze_make blaze-make
-# bind _blaze_log function to blaze-log command
-complete -F _blaze_log blaze-log
+# bind _haze function to haze command
+complete -F _haze haze
+# bind _haze init function to haze-init command
+complete -F _haze_init haze-init
+# bind _haze_config function to haze-config command
+complete -F _haze_config haze-config
+# bind _haze_add function to haze-add command
+complete -F _haze_add haze-add
+# bind _haze_edit function to haze-edit command
+complete -F _haze_edit haze-edit
+# bind _haze_remove function to haze-remove command
+complete -F _haze_remove haze-remove
+# bind _haze_list function to haze-list command
+complete -F _haze_list haze-list
+# bind _haze_make function to haze-make command
+complete -F _haze_make haze-make
+# bind _haze_log function to haze-log command
+complete -F _haze_log haze-log
