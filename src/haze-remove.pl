@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
 
-# blaze-remove - removes a post or page from the BlazeBlogger repository
+# haze-remove - removes a post or page from the hazeblogger repository
 # Copyright (C) 2008-2011 Jaromir Hradilek
 
 # This program is  free software:  you can redistribute it and/or modify it
@@ -71,7 +71,7 @@ sub display_help {
 Usage: $NAME [-fipqPV] [-b DIRECTORY] ID...
        $NAME -h|-v
 
-  -b, --blogdir directory     specify a directory in which the BlazeBlogger
+  -b, --blogdir directory     specify a directory in which the hazeblogger
                               repository is placed
   -p, --page                  remove a page or pages
   -P, --post                  remove a blog post or blog posts
@@ -148,9 +148,9 @@ sub remove_records {
   # Process each record:
   foreach my $id (@$ids) {
     # Prepare the file names:
-    my $head = catfile($blogdir, '.blaze', "${type}s", 'head', $id);
-    my $body = catfile($blogdir, '.blaze', "${type}s", 'body', $id);
-    my $raw  = catfile($blogdir, '.blaze', "${type}s", 'raw', $id);
+    my $head = catfile($blogdir, '.haze', "${type}s", 'head', $id);
+    my $body = catfile($blogdir, '.haze', "${type}s", 'body', $id);
+    my $raw  = catfile($blogdir, '.haze', "${type}s", 'raw', $id);
 
     # Enter the interactive mode if requested:
     if ($prompt) {
@@ -197,7 +197,7 @@ sub add_to_log {
   my $text = shift || 'Something miraculous has just happened!';
 
   # Prepare the log file name:
-  my $file = catfile($blogdir, '.blaze', 'log');
+  my $file = catfile($blogdir, '.haze', 'log');
 
   # Open the log file for appending:
   open(LOG, ">>$file") or return 0;
@@ -233,8 +233,8 @@ exit_with_error("Wrong number of options.", 22) if (scalar(@ARGV) < 1);
 
 # Check whether the repository is present, no matter how naive this method
 # actually is:
-exit_with_error("Not a BlazeBlogger repository! Try `blaze-init' first.",1)
-  unless (-d catdir($blogdir, '.blaze'));
+exit_with_error("Not a hazeblogger repository! Try `haze-init' first.",1)
+  unless (-d catdir($blogdir, '.haze'));
 
 # Remove the records from the repository:
 my @list = remove_records($type, \@ARGV);
@@ -266,18 +266,18 @@ __END__
 
 =head1 NAME
 
-blaze-remove  - removes a post or page from the BlazeBlogger repository
+haze-remove  - removes a post or page from the hazeblogger repository
 
 =head1 SYNOPSIS
 
-B<blaze-remove> [B<-fipqPV>] [B<-b> I<directory>] I<id>...
+B<haze-remove> [B<-fipqPV>] [B<-b> I<directory>] I<id>...
 
-B<blaze-remove> B<-h>|B<-v>
+B<haze-remove> B<-h>|B<-v>
 
 =head1 DESCRIPTION
 
-B<blaze-remove> removes a blog post or a page with the specified I<id> from
-the BlazeBlogger repository.
+B<haze-remove> removes a blog post or a page with the specified I<id> from
+the hazeblogger repository.
 
 =head1 OPTIONS
 
@@ -285,16 +285,16 @@ the BlazeBlogger repository.
 
 =item B<-b> I<directory>, B<--blogdir> I<directory>
 
-Allows you to specify a I<directory> in which the BlazeBlogger repository
+Allows you to specify a I<directory> in which the hazeblogger repository
 is placed. The default option is a current working directory.
 
 =item B<-p>, B<--page>, B<--pages>
 
-Tells B<blaze-remove> to remove a page or pages.
+Tells B<haze-remove> to remove a page or pages.
 
 =item B<-P>, B<--post>, B<--posts>
 
-Tells B<blaze-remove> to remove a blog post or blog posts. This is the
+Tells B<haze-remove> to remove a blog post or blog posts. This is the
 default option.
 
 =item B<-f>, B<--force>
@@ -328,36 +328,36 @@ Displays version information and exits.
 
 Remove a blog post:
 
-  ~]$ blaze-remove 10
+  ~]$ haze-remove 10
   Successfully removed the post with ID 10.
 
 Remove a page:
 
-  ~]$ blaze-remove -p 4
+  ~]$ haze-remove -p 4
   Successfully removed the page with ID 4.
 
 Remove multiple blog posts:
 
-  ~]$ blaze-remove 10 4 6
+  ~]$ haze-remove 10 4 6
   Successfully removed the post with ID 10, 4 and 6.
 
 Remove multiple blog posts safely:
 
-  ~]$ blaze-remove -i 10 4 6
+  ~]$ haze-remove -i 10 4 6
   Remove the post with ID 10 titled `Debian and Fedora Packages'? y
-  Remove the post with ID 4 titled `BlazeBlogger 0.8.0 RC2'? y
-  Remove the post with ID 6 titled `BlazeBlogger 0.8.1'? y
+  Remove the post with ID 4 titled `hazeblogger 0.8.0 RC2'? y
+  Remove the post with ID 6 titled `hazeblogger 0.8.1'? y
   Successfully removed the post with ID 10, 4 and 6.
 
 =head1 SEE ALSO
 
-B<blaze-config>(1), B<blaze-add>(1), B<blaze-list>(1)
+B<haze-config>(1), B<haze-add>(1), B<haze-list>(1)
 
 =head1 BUGS
 
 To report a bug or to send a patch, please, add a new issue to the bug
-tracker at <http://code.google.com/p/blazeblogger/issues/>, or visit the
-discussion group at <http://groups.google.com/group/blazeblogger/>.
+tracker at <http://code.google.com/p/hazeblogger/issues/>, or visit the
+discussion group at <http://groups.google.com/group/hazeblogger/>.
 
 =head1 COPYRIGHT
 

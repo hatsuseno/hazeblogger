@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
 
-# blaze-init - creates or recovers a BlazeBlogger repository
+# haze-init - creates or recovers a hazeblogger repository
 # Copyright (C) 2008-2011 Jaromir Hradilek
 
 # This program is  free software:  you can redistribute it and/or modify it
@@ -68,7 +68,7 @@ sub display_help {
 Usage: $NAME [-fqV] [-b DIRECTORY]
        $NAME -h|-v
 
-  -b, --blogdir DIRECTORY     specify a directory in which the BlazeBlogger
+  -b, --blogdir DIRECTORY     specify a directory in which the hazeblogger
                               repository is to be placed
   -f, --force                 revert existing configuration, theme, and
                               language files to their initial state
@@ -105,7 +105,7 @@ END_VERSION
 # Create the default configuration file:
 sub create_conf {
   # Prepare the configuration file name:
-  my $file = catfile($blogdir, '.blaze', 'config');
+  my $file = catfile($blogdir, '.haze', 'config');
 
   # Unless explicitly requested, do not overwrite the existing file:
   return 1 if (-e $file && !$force);
@@ -115,9 +115,9 @@ sub create_conf {
 
   # Write the default configuration to the file:
   print FILE << 'END_CONFIG';
-## This is the default BlazeBlogger configuration file. The recommended way
-## to set up your blog is to leave  this file intact,  and use blaze-config
-## instead.  However, if you prefer to configure BlazeBlogger by hand, read
+## This is the default hazeblogger configuration file. The recommended way
+## to set up your blog is to leave  this file intact,  and use haze-config
+## instead.  However, if you prefer to configure hazeblogger by hand, read
 ## the instructions below,  and replace the value on the right of the equal
 ## sign.
 
@@ -128,11 +128,11 @@ sub create_conf {
 ##   description   A brief description of your blog.
 ##   keywords      A comma-separated list of keywords.
 ##   theme         A theme for your blog. It must point to an existing file
-##                 in the .blaze/theme/ directory.
+##                 in the .haze/theme/ directory.
 ##   style         A style sheet for your blog.  It must point to  an exis-
-##                 ting file in the .blaze/style/ directory.
+##                 ting file in the .haze/style/ directory.
 ##   lang          A translation of your blog. It must point to an existing
-##                 file in the .blaze/lang/ directory.
+##                 file in the .haze/lang/ directory.
 ##   posts         A number of blog posts to be listed on a single page.
 ##
 [blog]
@@ -148,15 +148,15 @@ posts=10
 ## Color settings. Available options are:
 ##
 ##   list          A boolean  to enable (true) or disable (false) colors in
-##                 the blaze-list output.
+##                 the haze-list output.
 ##   log           A boolean  to enable (true) or disable (false) colors in
-##                 the blaze-log output.
+##                 the haze-log output.
 ##
 [color]
 list=false
 log=false
 
-## Advanced BlazeBlogger settings. Available options are:
+## Advanced hazeblogger settings. Available options are:
 ##
 ##   doctype       A document type.  It can be  either  html  for HTML,  or
 ##                 xhtml for the XHTML standard.
@@ -234,7 +234,7 @@ END_CONFIG
 # Create the default theme file:
 sub create_theme {
   # Prepare the theme file name:
-  my $file = catfile($blogdir, '.blaze', 'theme', 'default.html');
+  my $file = catfile($blogdir, '.haze', 'theme', 'default.html');
 
   # Unless explicitly requested, do not overwrite the existing file:
   return 1 if (-e $file && !$force);
@@ -291,13 +291,13 @@ sub create_theme {
 
     <h2>Links</h2>
     <ul>
-<li><a href="http://blaze.blackened.cz">BlazeBlogger</a></li>
+<li><a href="http://haze.blackened.cz">hazeblogger</a></li>
     </ul>
   </div>
 
   <div id="footer">
     Copyright &copy; <!-- year --> <!-- name -->.
-    Powered by <a href="http://blaze.blackened.cz/">BlazeBlogger</a>.
+    Powered by <a href="http://haze.blackened.cz/">hazeblogger</a>.
   </div>
 </div>
 
@@ -318,7 +318,7 @@ END_THEME
 # Create the default style sheet:
 sub create_style {
   # Prepare the style sheet file name:
-  my $file = catfile($blogdir, '.blaze', 'style', 'default.css');
+  my $file = catfile($blogdir, '.haze', 'style', 'default.css');
 
   # Unless explicitly requested, do not overwrite the existing file:
   return 1 if (-e $file && !$force);
@@ -328,7 +328,7 @@ sub create_style {
 
   # Write the default style style sheet to the file:
   print FILE << 'END_STYLE';
-/* default.css, the default theme for BlazeBlogger
+/* default.css, the default theme for hazeblogger
  * Copyright (C) 2009, 2010 Jaromir Hradilek
  *
  * This program is free software:  you can redistribute it and/or modify it
@@ -559,7 +559,7 @@ END_STYLE
 # Create the default localization file:
 sub create_lang {
   # Prepare the localization file name:
-  my $file = catfile($blogdir, '.blaze', 'lang', 'en_US');
+  my $file = catfile($blogdir, '.haze', 'lang', 'en_US');
 
   # Unless explicitly requested, do not overwrite the existing file:
   return 1 if (-e $file && !$force);
@@ -608,7 +608,7 @@ sub add_to_log {
   my $text = shift || 'Something miraculous has just happened!';
 
   # Prepare the log file name:
-  my $file = catfile($blogdir, '.blaze', 'log');
+  my $file = catfile($blogdir, '.haze', 'log');
 
   # Open the log file for appending:
   open(LOG, ">>$file") or return 0;
@@ -640,21 +640,21 @@ GetOptions(
 exit_with_error("Invalid option `$ARGV[0]'.", 22) if (scalar(@ARGV) != 0);
 
 # Decide whether to create or recover the repository:
-my $action = (-d catdir($blogdir, '.blaze')) ? 'Recovered' : 'Created';
+my $action = (-d catdir($blogdir, '.haze')) ? 'Recovered' : 'Created';
 
 # Create the directory tree:
 eval {
   mkpath(
     [
-      catdir($blogdir, '.blaze', 'lang'),
-      catdir($blogdir, '.blaze', 'theme'),
-      catdir($blogdir, '.blaze', 'style'),
-      catdir($blogdir, '.blaze', 'pages', 'head'),
-      catdir($blogdir, '.blaze', 'pages', 'body'),
-      catdir($blogdir, '.blaze', 'pages', 'raw'),
-      catdir($blogdir, '.blaze', 'posts', 'head'),
-      catdir($blogdir, '.blaze', 'posts', 'body'),
-      catdir($blogdir, '.blaze', 'posts', 'raw'),
+      catdir($blogdir, '.haze', 'lang'),
+      catdir($blogdir, '.haze', 'theme'),
+      catdir($blogdir, '.haze', 'style'),
+      catdir($blogdir, '.haze', 'pages', 'head'),
+      catdir($blogdir, '.haze', 'pages', 'body'),
+      catdir($blogdir, '.haze', 'pages', 'raw'),
+      catdir($blogdir, '.haze', 'posts', 'head'),
+      catdir($blogdir, '.haze', 'posts', 'body'),
+      catdir($blogdir, '.haze', 'posts', 'raw'),
     ],
     0 # Do not be verbose.
   );
@@ -680,12 +680,12 @@ create_lang()
   or display_warning("Unable to create the default localization.");
 
 # Create the default log file:
-add_to_log("$action a BlazeBlogger repository.")
+add_to_log("$action a hazeblogger repository.")
   or display_warning("Unable to log the event.");
 
 # Report success:
-print "$action a BlazeBlogger repository in " .
-      catdir($blogdir, '.blaze') . ".\n" if $verbose;
+print "$action a hazeblogger repository in " .
+      catdir($blogdir, '.haze') . ".\n" if $verbose;
 
 # Return success:
 exit 0;
@@ -694,17 +694,17 @@ __END__
 
 =head1 NAME
 
-blaze-init - creates or recovers a BlazeBlogger repository
+haze-init - creates or recovers a hazeblogger repository
 
 =head1 SYNOPSIS
 
-B<blaze-init> [B<-fqV>] [B<-b> I<directory>]
+B<haze-init> [B<-fqV>] [B<-b> I<directory>]
 
-B<blaze-init> B<-h>|B<-v>
+B<haze-init> B<-h>|B<-v>
 
 =head1 DESCRIPTION
 
-B<blaze-init> either creates a fresh new BlazeBlogger repository, or
+B<haze-init> either creates a fresh new hazeblogger repository, or
 recovers an existing one in case it is corrupted. Optionally, it can also
 revert a configuration and default templates to their original state,
 leaving all user data (that is, both blog posts and pages) intact.
@@ -715,7 +715,7 @@ leaving all user data (that is, both blog posts and pages) intact.
 
 =item B<-b> I<directory>, B<--blogdir> I<directory>
 
-Allows you to specify a I<directory> in which the BlazeBlogger repository
+Allows you to specify a I<directory> in which the hazeblogger repository
 is to be blaced. The default option is a current working directory.
 
 =item B<-f>, B<--force>
@@ -745,37 +745,37 @@ Displays version information and exits.
 
 Create a new blog in a current directory:
 
-  ~]$ blaze-init
-  Created a BlazeBlogger repository in .blaze.
+  ~]$ haze-init
+  Created a hazeblogger repository in .haze.
 
 Create a new blog in ~/public_html:
 
-  ~]$ blaze-init -b ~/public_html
-  Created a BlazeBlogger repository in /home/joe/public_html/.blaze.
+  ~]$ haze-init -b ~/public_html
+  Created a hazeblogger repository in /home/joe/public_html/.haze.
 
 Revert a configuration file and default templates to their initial state:
 
-  ~]$ blaze-init -f
-  Recovered a BlazeBlogger repository in .blaze.
+  ~]$ haze-init -f
+  Recovered a hazeblogger repository in .haze.
 
 Or if you want to see what files have been reverted:
 
-  ~]$ blaze-init -fV
-  Created .blaze/config
-  Created .blaze/theme/default.html
-  Created .blaze/style/default.css
-  Created .blaze/lang/en_US
-  Recovered a BlazeBlogger repository in .blaze.
+  ~]$ haze-init -fV
+  Created .haze/config
+  Created .haze/theme/default.html
+  Created .haze/style/default.css
+  Created .haze/lang/en_US
+  Recovered a hazeblogger repository in .haze.
 
 =head1 SEE ALSO
 
-B<blaze-config>(1), B<blaze-add>(1)
+B<haze-config>(1), B<haze-add>(1)
 
 =head1 BUGS
 
 To report a bug or to send a patch, please, add a new issue to the bug
-tracker at <http://code.google.com/p/blazeblogger/issues/>, or visit the
-discussion group at <http://groups.google.com/group/blazeblogger/>.
+tracker at <http://code.google.com/p/hazeblogger/issues/>, or visit the
+discussion group at <http://groups.google.com/group/hazeblogger/>.
 
 =head1 COPYRIGHT
 

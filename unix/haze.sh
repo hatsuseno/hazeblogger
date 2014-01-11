@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# blaze, a command wrapper for BlazeBlogger
+# haze, a command wrapper for hazeblogger
 # Copyright (C) 2009-2011 Jaromir Hradilek
 
 # This program is  free software:  you can redistribute it and/or modify it
@@ -38,7 +38,7 @@ esac
 case "$COMMAND" in
   "add" | "log" | "edit" | "init" | "list" | "make" | "config" | "remove")
     # Run the selected utility:
-    exec blaze-$COMMAND "$@"
+    exec haze-$COMMAND "$@"
     ;;
   "-h" | "--help" | "help")
     # Get the command, if any:
@@ -48,21 +48,21 @@ case "$COMMAND" in
     case "$COMMAND" in
       "add" | "log" | "edit" | "init" | "list" | "make" | "config" | "remove")
         # Display the utility usage information:
-        exec blaze-$COMMAND --help
+        exec haze-$COMMAND --help
         ;;
       *)
         # Display the list of available commands:
         echo "Usage: $NAME COMMAND [OPTION...]"
         echo
         echo "Basic commands:"
-        echo "  init     create or recover a BlazeBlogger repository"
-        echo "  config   display or set BlazeBlogger configuration options"
-        echo "  add      add a blog post or page to a BlazeBlogger repository"
-        echo "  edit     edit a blog post or page in a BlazeBlogger repository"
-        echo "  remove   remove a blog post or page from a BlazeBlogger repository"
-        echo "  list     list blog posts or pages in a BlazeBlogger repository"
-        echo "  make     generate a blog from a BlazeBlogger repository"
-        echo "  log      display a BlazeBlogger repository log"
+        echo "  init     create or recover a hazeblogger repository"
+        echo "  config   display or set hazeblogger configuration options"
+        echo "  add      add a blog post or page to a hazeblogger repository"
+        echo "  edit     edit a blog post or page in a hazeblogger repository"
+        echo "  remove   remove a blog post or page from a hazeblogger repository"
+        echo "  list     list blog posts or pages in a hazeblogger repository"
+        echo "  make     generate a blog from a hazeblogger repository"
+        echo "  log      display a hazeblogger repository log"
         echo
         echo "Additional commands:"
         echo "  help [COMMAND]  display usage information on the selected command"
@@ -91,17 +91,17 @@ case "$COMMAND" in
     case "$COMMAND" in
       "add" | "log" | "edit" | "init" | "list" | "make" | "config" | "remove")
         # Display the utility usage information:
-        exec man blaze-$COMMAND
+        exec man haze-$COMMAND
         ;;
       *)
         # Display a general manual page:
-        exec man blaze
+        exec man haze
         ;;
     esac
     ;;
   "-v" | "--version" | "version")
     # Display version information:
-    echo "BlazeBlogger $VERSION"
+    echo "hazeblogger $VERSION"
     echo
     echo "Copyright (C) 2008-2011 Jaromir Hradilek"
     echo "This program is free software; see the source for copying conditions. It is"

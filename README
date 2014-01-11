@@ -1,4 +1,4 @@
-                  BlazeBlogger - a CMS without boundaries
+                  hazeblogger - a CMS without boundaries
 
                             general information
 
@@ -11,12 +11,12 @@
    Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
 
    A copy  of the license is included  as a file called FDL  in the main
-   directory of the BlazeBlogger source package.
+   directory of the hazeblogger source package.
 
 
 ABSTRACT
 
-This document provides a general information about BlazeBlogger 1.2.0.  For
+This document provides a general information about hazeblogger 1.2.0.  For
 installation instructions, refer to a file called INSTALL.
 
 
@@ -32,7 +32,7 @@ TABLE OF CONTENTS
 
 1. OVERVIEW
 
-BlazeBlogger is a simple to use but capable CMS for the command line. Being
+hazeblogger is a simple to use but capable CMS for the command line. Being
 written in Perl as a cross-platform application,  and producing static con-
 tent without the need of database  servers or server-side scripting,  it is
 literally a CMS without  boundaries suitable for a wide variety of web pre-
@@ -49,23 +49,23 @@ website.
 
 1.2 Example Usage
 
-  ~]$ blaze-init   # Creates a new repository in .blaze/
-  ~]$ blaze-add    # Allows you to write a new post in your favorite editor
-  ~]$ blaze-make   # Generates a blog from the repository
+  ~]$ haze-init   # Creates a new repository in .haze/
+  ~]$ haze-add    # Allows you to write a new post in your favorite editor
+  ~]$ haze-make   # Generates a blog from the repository
 
 
 2. DEVELOPMENT
 
-As a version control system for its source code, BlazeBlogger uses Git with
+As a version control system for its source code, hazeblogger uses Git with
 a public repository located at gitorious.org. To get the latest development
 version, use the following command:
 
-  git clone git://gitorious.org/blazeblogger/mainline.git blazeblogger
+  git clone git://gitorious.org/hazeblogger/mainline.git hazeblogger
 
 Alternatively, if you are behind a restrictive firewall,  use the following
 command instead:
 
-  git clone http://git.gitorious.org/blazeblogger/mainline.git blazeblogger
+  git clone http://git.gitorious.org/hazeblogger/mainline.git hazeblogger
 
 If you are planning to make some interesting changes, please, consider clo-
 ning the project on Gitorious, so that I can follow you and eventually pull
@@ -75,8 +75,8 @@ your work to the upstream.
 3. BUGS
 
 To report a bug or to send a patch, please, add a new issue to the bug tra-
-cker at <http://code.google.com/p/blazeblogger/issues/>,  or visit the dis-
-cussion group at <http://groups.google.com/group/blazeblogger/>.
+cker at <http://code.google.com/p/hazeblogger/issues/>,  or visit the dis-
+cussion group at <http://groups.google.com/group/hazeblogger/>.
 
 
 4. COPYRIGHT
