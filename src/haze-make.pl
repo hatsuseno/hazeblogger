@@ -1113,7 +1113,13 @@ sub generate_sitemap {
 
   # Write the header:
   print XML "<?xml version=\"1.0\" encoding=\"$core_encoding\"?>\n\n" .
-            "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n";
+            "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n" .
+            "  <url>\n" .
+            "    <loc>$feed_baseurl</loc>\n" .
+            "    <lastmod>" . date_to_string(time) . "</lastmod>\n" .
+            "    <changefreq>$sitemap_index_freq</changefreq>\n" .
+            "    <priority>1.0</priority>\n" .
+            "  </url>\n\n";
 
   # Process the requested number of posts:
   foreach my $record (@{$data->{headers}->{posts}}) {
@@ -1128,7 +1134,7 @@ sub generate_sitemap {
               "    <lastmod>" . $record->{ date } . "</lastmod>\n" .
               "    <changefreq>$sitemap_post_freq</changefreq>\n" .
               "    <priority>0.8</priority>\n" .
-              "  </url>\n";
+              "  </url>\n\n";
   }
 
   # Write the sitemap footer:
