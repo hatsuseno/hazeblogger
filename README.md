@@ -3,16 +3,16 @@
                             general information
 
 
-   Copyright (C) 2009-2011 Jaromir Hradilek
-   Copyright (C) 2014 Rudolf Leermakers
+    Copyright (C) 2009-2011 Jaromir Hradilek
+    Copyright (C) 2014 Rudolf Leermakers
 
-   Permission is granted to copy, distribute and/or modify this document
-   under the terms of the GNU Free Documentation License, Version 1.3 or
-   any later version published by the Free Software Foundation; with no
-   Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+    Permission is granted to copy, distribute and/or modify this document
+    under the terms of the GNU Free Documentation License, Version 1.3 or
+    any later version published by the Free Software Foundation; with no
+    Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
 
-   A copy of the license is included as a file called FDL in the main
-   directory of the hazeblogger source package.
+    A copy of the license is included as a file called FDL in the main
+    directory of the hazeblogger source package.
 
 
 # ABSTRACT
@@ -24,8 +24,8 @@ installation instructions, refer to a file called INSTALL.
 # TABLE OF CONTENTS
 
   1. Overview
-     1.1. Notable Features
-     1.2. Example Usage
+  1.1. Notable Features
+  1.2. Example Usage
   2. Development
   3. Bugs
   4. Copyright
