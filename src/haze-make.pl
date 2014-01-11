@@ -39,6 +39,7 @@ our $with_posts  = 1;                               # Generate posts?
 our $with_pages  = 1;                               # Generate pages?
 our $with_tags   = 1;                               # Generate tags?
 our $with_rss    = 1;                               # Generate RSS feed?
+our $with_sitemap = 1;                              # Generate sitemap?
 our $with_css    = 1;                               # Generate stylesheet?
 our $full_paths  = 0;                               # Generate full paths?
 
@@ -1093,6 +1094,56 @@ sub copy_stylesheet {
   return 1;
 }
 
+sub generate_sitemap {
+  my $data = shift || die 'Missing data argument';
+
+  my $sitemap_filename = $conf->{ sitemap }{ filename } || 'sitemap.xml';
+  my $sitemap_post_freq = $conf->{ sitemap }{ post_freq } || 'never';
+  my $sitemap_page_freq = $conf->{ sitemap }{ page_freq } || 'monthly';
+  my $sitemap_index_freq = $conf->{ sitemap }{ index_freq } || 'weekly';
+  my $core_encoding = $conf->{ core }->{ encoding }  || 'UTF-8';
+  my $feed_baseurl = $conf->{ feed }{ baseurl };
+
+  # Prepare the sitemap file name:
+  my $file = ($destdir eq '.') ? $sitemap_filename
+                               : catfile($destdir, $sitemap_filename);
+
+  # Open the file for writing:
+  open(XML, ">$file") or return 0;
+
+  # Write the header:
+  print XML "<?xml version=\"1.0\" encoding=\"$core_encoding\"?>\n\n" .
+            "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n";
+
+  # Process the requested number of posts:
+  foreach my $record (@{$data->{headers}->{posts}}) {
+    # Decompose the record:
+    my $url        = $record->{url};
+
+    my ($year, $month, $day) = split m[\-], $record->{ date };
+
+    # Open the blog post item:
+    print XML "  <url>\n" .
+              "    <loc>$feed_baseurl/$year/$month/$url</loc>\n" .
+              "    <lastmod>" . $record->{ date } . "</lastmod>\n" .
+              "    <changefreq>$sitemap_post_freq</changefreq>\n" .
+              "    <priority>0.8</priority>\n" .
+              "  </url>\n";
+  }
+
+  # Write the sitemap footer:
+  print XML "</urlset>\n";
+
+  # Close the file:
+  close(XML);
+
+  # Report success:
+  print "Created $file\n" if $verbose > 1;
+
+  # Return success:
+  return 1;
+}
+
 # Generate the RSS feed:
 sub generate_rss {
   my $data          = shift || die 'Missing argument';
@@ -1124,6 +1175,7 @@ sub generate_rss {
 
     # Disable the RSS:
     $with_rss = 0;
+    $with_sitemap = 0;
 
     # Return success:
     return 1;
@@ -1660,6 +1712,8 @@ GetOptions(
   'no-tags|T'     => sub { $with_tags  = 0 },
   'with-rss'      => sub { $with_rss   = 1 },
   'no-rss|r'      => sub { $with_rss   = 0 },
+  'with-sitemap'  => sub { $with_sitemap = 1 },
+  'no-sitemap|s'  => sub { $with_sitemap = 0 },
   'with-css'      => sub { $with_css   = 1 },
   'no-css|c'      => sub { $with_css   = 0 },
   'full-paths|F'  => sub { $full_paths = 1 },
@@ -1688,6 +1742,7 @@ unless ($with_posts || $with_pages) {
 unless ($with_posts) {
   $with_tags = 0;
   $with_rss  = 0;
+  $with_sitemap = 0;
 }
 
 # Read the configuration file:
@@ -1708,6 +1763,11 @@ copy_stylesheet()
 generate_rss($data)
   or exit_with_error("An error has occurred while creating the RSS feed.")
   if $with_rss;
+
+# Generate sitemap XML:
+generate_sitemap($data)
+  or exit_with_error("An error has occurred while creating the sitemap XML.")
+  if $with_sitemap;
 
 # Generate index page:
 generate_index($data)
